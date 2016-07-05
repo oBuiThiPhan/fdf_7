@@ -15,6 +15,7 @@ gem "coffee-rails", "~> 4.1.0"
 # gem "therubyracer", platforms: :ruby
 gem "will_paginate"
 gem "bootstrap-will_paginate"
+gem "fog"
 # gem 'therubyracer', platforms: :ruby
 # Use jquery as the JavaScript library
 gem "jquery-rails"
@@ -26,7 +27,8 @@ gem "jbuilder", "~> 2.0"
 gem "sdoc", "~> 0.4.0", group: :doc
 gem "devise"
 gem "cancancan"
-gem "carrierwave"            
+gem "carrierwave"
+
 gem "mini_magick"
 # bootstrap
 gem "bootstrap-sass",       "3.2.0.0"
