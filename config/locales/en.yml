@@ -20,4 +20,24 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  project_name: "FOODS and DRINKS"
+  static_pages:
+    about:
+      title: "About"
+    help:
+      title: "Help"
+    contact:
+      title: "Contact"
+    home:
+      team: "FDF 7 TEAM"
+      ten1: "Hoang Thi Lanh"
+      ten2: "Bui Thi Phan"
+      title: "Home"
+      signupnow: "Sign up now"
+  layout:
+    header:
+      login: "Log in"
+    footer:
+      about: "About"
+      help: "Help"
+      contact: "Contact"
