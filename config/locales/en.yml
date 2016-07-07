@@ -37,6 +37,8 @@ en:
   layout:
     header:
       login: "Log in"
+      signup: "signup"
+      logout: "Log out"
     footer:
       about: "About"
       help: "Help"
