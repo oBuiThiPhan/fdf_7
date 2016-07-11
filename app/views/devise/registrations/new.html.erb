@@ -6,6 +6,11 @@
     <%= form_for resource, as: resource_name, url: registration_path(resource_name) do |f| %>
     <%= devise_error_messages! %>
       <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, class: "form-control" %>
       </div>
@@ -29,6 +34,6 @@
         class: "btn btn-success btn-lg btn-signup" %>
       </center>
       <%= render "devise/shared/links" %>
-    <% end %>     
+    <% end %>
   </div>
 </div>
