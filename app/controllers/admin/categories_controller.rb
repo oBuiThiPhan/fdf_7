@@ -1,8 +1,8 @@
 class Admin::CategoriesController < ApplicationController
-  before_action :load_category, only: [:edit, :update, :destroy]
+  load_and_authorize_resource
 
   def index
-    @categories = Category.where.not(parent_id: nil).order("parent_id")
+    @categories = @categories.where.not(parent_id: nil).order("parent_id")
   end
 
   def new
@@ -47,9 +47,5 @@ class Admin::CategoriesController < ApplicationController
   private
   def category_params
     params.require(:category).permit :title, :parent_id
-  end
-
-  def load_category
-    @category = Category.find_by id: params[:id]
   end
 end

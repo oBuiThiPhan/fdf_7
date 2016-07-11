@@ -42,6 +42,7 @@ en:
       categories: "Categories"
       editprofile: "Edit profile"
       profile: "Profile"
+      products: "Products"
     footer:
       about: "About"
       help: "Help"
@@ -56,12 +57,28 @@ en:
   activerecord:
     model:
       category: "Category"
+      product: "Product"
   views:
     shared:
       error:
         message: "The form contains"
         name: "error"
     admin:
+      product:
+        form:
+          category: "Category"
+        new:
+          h1: "Create new product"
+        edit:
+          h1: "Edit product"
+        index:
+          all: "All products"
+          id: "Id"
+          name: "Name"
+          category: "Category"
+          price: "Price ($)"
+          quantity: "Quantity"
+          newproductbutton: "Create new product"
       category:
         new:
           h1: "Create new category"
