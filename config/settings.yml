@@ -4,3 +4,5 @@ per_page: "5"
 admin:
   size: "70x70"
   url: "assets/avata.jpg"
+role:
+  member: 1

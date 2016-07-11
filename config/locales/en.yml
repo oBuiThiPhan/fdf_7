@@ -59,6 +59,10 @@ en:
       category: "Category"
       product: "Product"
   views:
+    products:
+      index:
+        h1: "All products"
+        ratescore: "Rate score: "
     shared:
       error:
         message: "The form contains"
