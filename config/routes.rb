@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :categories, except: [:show]
+    resources :users, only: [:index, :destroy]
     resources :products, except: [:show]
   end
 end
