@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   get "about" => "static_pages#about"
   get "contact" => "static_pages#contact"
 
+  resources :users, only: [:edit, :update]
+
   namespace :admin do
     resources :categories, except: [:show]
   end
+  
 end

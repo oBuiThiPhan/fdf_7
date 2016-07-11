@@ -40,6 +40,8 @@ en:
       signup: "signup"
       logout: "Log out"
       categories: "Categories"
+      editprofile: "Edit profile"
+      profile: "Profile"
     footer:
       about: "About"
       help: "Help"
@@ -79,3 +81,16 @@ en:
           newcategorybutton: "Create new category"
         form:
           classify: "Classify"
+  user:
+    edit: "Profile updated"
+    name: "Name"
+    email: "Email"
+    phone: "Phone_number"
+    address: "Address"
+    avatar: "Avatar"
+    notice: "Are you sure?"
+    Update: "Update"
+    Cancel: "Cancel"
+  shared:
+    contain_error: "the form contains "
+    errors: "errors"

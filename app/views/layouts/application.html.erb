@@ -24,8 +24,8 @@
       <%= yield %>
     </div>
     <div class="footer navbar-fixed-bottom">
-      <li><%= link_to t("layout.footer.about"), about_path %></li>
-      <li><%= link_to t("layout.footer.contact"), contact_path %></li>
+      <%= link_to t("layout.footer.about"),
+        about_path %> | <%= link_to t("layout.footer.contact"), contact_path %>
     </div>
   </body>
 </html>
