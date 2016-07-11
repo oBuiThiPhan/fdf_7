@@ -6,3 +6,6 @@ admin:
   url: "assets/avata.jpg"
 role:
   member: 1
+product:
+  show:
+    size: "350x400"
