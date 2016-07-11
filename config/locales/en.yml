@@ -108,6 +108,11 @@ en:
     notice: "Are you sure?"
     Update: "Update"
     Cancel: "Cancel"
+    password: "password"
+  admin:
+    delete: "Delete"
+    list_user: "List user"
+    messages: "Are you sure?" 
   shared:
     contain_error: "the form contains "
     errors: "errors"
