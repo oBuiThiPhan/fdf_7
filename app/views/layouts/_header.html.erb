@@ -11,6 +11,8 @@
               admin_categories_path %></li>
             <li><%= link_to t("layout.header.products"),
               admin_products_path %></li>
+            <li><%= link_to t("admin.list_user"), admin_users_path %>
+            </li>
           <% end %>
 
           <li class="dropdown">
@@ -20,8 +22,6 @@
             <ul class="dropdown-menu">
               <li><%= link_to t("layout.header.editprofile"),
                 edit_user_path(current_user) %>
-              <li><%= link_to t("layout.header.profile"), user_path(current_user) %>
-              </li>
               <li><%= link_to t("layout.header.profile"), user_path(current_user) %>
               </li>
               <li class="divider"></li>

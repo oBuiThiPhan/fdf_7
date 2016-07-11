@@ -112,7 +112,7 @@ en:
   admin:
     delete: "Delete"
     list_user: "List user"
-    messages: "Are you sure?" 
+    messages: "Are you sure?"
   shared:
     contain_error: "the form contains "
     errors: "errors"
