@@ -4,6 +4,8 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to t("static_pages.home.title"), root_path %></li>
+        <li><%= link_to t("layout.header.categories"),
+          admin_categories_path %></li>
         <% if user_signed_in? %>
           <li>
             <%= link_to t("layout.header.logout"), destroy_user_session_path,

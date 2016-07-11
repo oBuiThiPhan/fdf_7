@@ -39,7 +39,43 @@ en:
       login: "Log in"
       signup: "signup"
       logout: "Log out"
+      categories: "Categories"
     footer:
       about: "About"
       help: "Help"
       contact: "Contact"
+  controllers:
+    flash:
+      common:
+        create_success: "%{objects} created success!"
+        update_success: "%{objects} updated success!"
+        destroy_success: "%{objects} destroyed success!"
+        destroy_error: "%{objects} is not delete!"
+  activerecord:
+    model:
+      category: "Category"
+  views:
+    shared:
+      error:
+        message: "The form contains"
+        name: "error"
+    admin:
+      category:
+        new:
+          h1: "Create new category"
+          button: "Create"
+        edit:
+          h1: "Edit category"
+          button: "Update"
+        index:
+          h1: "Dashboard"
+          title: "Title"
+          id: "Id"
+          parent_id: "Classify"
+          function: "Functions"
+          editbutton: "Edit"
+          deletebutton: "Delete"
+          deleteconfirm: "Are you sure?"
+          newcategorybutton: "Create new category"
+        form:
+          classify: "Classify"

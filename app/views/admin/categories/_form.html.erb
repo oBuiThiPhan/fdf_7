@@ -1,0 +1,17 @@
+<%= form_for [:admin, @category] do |f| %>
+  <%= render partial: "shared/error_messages", locals: {object: @category}  %>
+
+  <span>
+    <strong><%= t("views.admin.category.form.classify") %>: </strong>
+    <%= f.select :parent_id,
+      options_for_select(Category.parent_category
+      .collect {|c| [c.title, c.id]}) %>
+  </span>
+  <br>
+  <span>
+    <strong><%= f.label :title %>:</strong>
+    <%= f.text_field :title %>
+  </span>
+  <br>
+  <%= f.submit yield: :button_text, class: "btn btn-primary" %>
+<% end %>
