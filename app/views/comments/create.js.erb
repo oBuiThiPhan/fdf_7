@@ -1,0 +1,4 @@
+$('#show-comment').html('<%= j render @product.comments
+  .order("created_at DESC").limit(5) %>');
+$('#new-comment').html('');
+$('#rate-score').html('<%= @product.rate_score %>');

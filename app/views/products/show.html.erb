@@ -8,10 +8,27 @@
       <strong><%= @product.name %> - <%= @product.category.title %></strong>
     </h2>
     <h4><%= @product.description %></h4>
-    <h3><%= @product.rate_score %></h3>
+    <h3>
+      <div id="rate-score">
+        <%= @product.rate_score %>
+      </div>
+    </h3>
     <h3><%= @product.price %> $</h3>
     <h4><%= t ".quantity" %><%= @product.quantity %></h4>
-    <button type="button" title="Add to Cart" class="add-to-cart"> t("products.addtocart")
+    <button type="button" title="Add to Cart" class="add-to-cart">
+      <%= t("products.addtocart") %>
     </button>
+    <% if can? :create, Comment %>
+      <div id="comment">
+        <%= link_to t("views.products.show.createcomment"),
+          new_product_comment_path(@product), remote: true %>
+      </div>
+      <div id="new-comment"></div>
+    <% end %>
+    <% if can? :read, Comment %>
+      <div id="show-comment">
+        <%= render @product.comments.order("created_at DESC").limit(5) %>
+      </div>
+    <% end %>
   </div>
 </div>

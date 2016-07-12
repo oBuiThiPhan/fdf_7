@@ -9,8 +9,10 @@ class Ability
       can :read, :all
       can :show, User
       can [:edit, :update], User, id: user.id
+      can [:read, :create], Comment
     else
       can :read, Product
+      can :read, Comment
     end
   end
 end

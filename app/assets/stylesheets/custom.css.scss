@@ -62,8 +62,13 @@ h1, h3 {
   width: 24%;
 }
 
-.product-card {
+.product-card, .comment-card {
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.comment-card {
+  padding: 10px;
+  margin-bottom: 1em;
 }
 
 ul.gallery {

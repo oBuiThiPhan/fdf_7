@@ -1,0 +1,10 @@
+<%= form_for [@product, @comment], remote: true do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <div id="rating-form">
+    <%= f.label :rating %>
+    <%= f.number_field :rating, step: "0.1" %>
+  </div>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.submit yield: :button_text, class: "btn btn-primary" %>
+<% end %>

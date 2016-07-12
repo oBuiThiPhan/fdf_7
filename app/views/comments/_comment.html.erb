@@ -1,0 +1,17 @@
+<div class="comment-card">
+  <%= image_tag comment.user.avatar.url, size: "30x30" %>
+  <span>
+    <%= comment.user.name %>
+  </span>
+  <span class="time-ago-in-words pull-right">
+    <%= time_ago_in_words(comment.created_at) %>
+    <%= t("views.comments.ago") %>
+  </span>
+  <div>
+    <%= t "views.comments.rating" %><%= comment.rating %>
+  </div>
+  <div>
+    <%= t "views.comments.content" %>
+    <%= comment.content %>
+  </div>
+</div>

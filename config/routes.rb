@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update]
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    resources :comments, only: [:new, :create]
+  end
 
   namespace :admin do
     resources :categories, except: :show
