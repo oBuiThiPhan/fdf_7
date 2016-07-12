@@ -5,7 +5,7 @@
 </div>
 <div class="row">
   <% @products.each do |product| %>
-    <div class="col-4" >
+    <div class="col-4 item" >
       <div class="thumbnail product-card">
         <%= link_to product do %>
           <%= image_tag product.image.url(:thumb) if product.image? %>

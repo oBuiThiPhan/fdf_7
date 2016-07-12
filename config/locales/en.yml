@@ -20,6 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  products:
+    show:
+      quantity: "Quantity in store: "
+      noproduct: "There are not this products in the store"
   project_name: "FOODS and DRINKS"
   static_pages:
     about:

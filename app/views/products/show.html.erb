@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-4 gallery"">
+    <%= image_tag @product.image.url, size: Settings.product.show.size,
+      class: "thumbnail zoom"%>
+  </div>
+  <div class="col-md-8">
+    <h2>
+      <strong><%= @product.name %> - <%= @product.category.title %></strong>
+    </h2>
+    <h4><%= @product.description %></h4>
+    <h3><%= @product.rate_score %></h3>
+    <h3><%= @product.price %> $</h3>
+    <h4><%= t ".quantity" %><%= @product.quantity %></h4>
+  </div>
+</div>
