@@ -15,8 +15,13 @@ class CartController < ApplicationController
     redirect_to products_path	
   end
 
+  def update
+    session[:cart][params[:id]] = params[:quantity]
+    redirect_to cart_path 
+  end
+
   def destroy
-    session[:cart] = nil
+    session[:cart][params[:id]] = nil
     redirect_to action: :index
   end
 end
