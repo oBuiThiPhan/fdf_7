@@ -62,6 +62,7 @@ en:
     flash:
       common:
         create_success: "%{objects} created success!"
+        create_error: "%{objects} is not created."
         update_success: "%{objects} updated success!"
         destroy_success: "%{objects} destroyed success!"
         destroy_error: "%{objects} is not delete!"
@@ -69,8 +70,15 @@ en:
     model:
       category: "Category"
       product: "Product"
+      comment: "Commnet"
   views:
+    comments:
+      ago: "ago."
+      rating: "Rating: "
+      content: "Content: "
     products:
+      show:
+        createcomment: "Create comment"
       index:
         h1: "List products"
         ratescore: "Rate score: "
