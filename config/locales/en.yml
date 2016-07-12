@@ -21,6 +21,13 @@
 
 en:
   products:
+    addtocart: "add to cart"
+    name: "Name product"
+    rate: "Ratescore"
+    pricebet: "Price between"
+    and: "and"
+    search: "Search"
+    classify: "Classify"
     show:
       quantity: "Quantity in store: "
       noproduct: "There are not this products in the store"
@@ -65,7 +72,7 @@ en:
   views:
     products:
       index:
-        h1: "All products"
+        h1: "List products"
         ratescore: "Rate score: "
     shared:
       error:

@@ -28,6 +28,7 @@ gem "sdoc", "~> 0.4.0", group: :doc
 gem "devise"
 gem "cancancan"
 gem "carrierwave"
+gem "ransack"
 
 gem "mini_magick"
 # bootstrap
