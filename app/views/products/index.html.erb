@@ -1,25 +1,51 @@
-<div class="row">
-  <div class="col-md-8">
-    <h1><%= t "views.products.index.h1" %></h1>
-  </div>
+<div class="panel">
+  <center><h1><%= t "views.products.index.h1" %></h1></center>
+  <%= search_form_for @search do |f|%>
+  <span>
+    <strong><%= t "views.admin.product.form.category" %>:</strong><br>
+    <%= f.grouped_collection_select :category_id_eq,
+      Category.parent_category.order(:title), :children, :title, :id, :title %>
+  </span>
+    <div class="field">
+      <%= f.label :name, t("products.name") %>
+      <%= f.text_field :name_cont %>
+    </div>
+    <div class="field">
+      <%= f.label :rate_score, t("products.rate") %>
+      <%= f.text_field :rate_score %>
+    </div>
+    <div class="field">
+      <%= f.label :price_gteq, t("products.pricebet") %>
+      <%= f.text_field :price_gteq %>
+      <%= f.label :price_lteq, t("products.and") %>
+      <%= f.text_field :price_lteq %>    
+    </div>
+    <%= f.sort_fields do |s| %>
+      <%= s.sort_select %>
+    <% end %>
+    <div class = "actions"><%= f.submit t ("products.search")%></div>
+  <% end %>
+   
 </div>
 <div class="row">
-  <% @products.each do |product| %>
-    <div class="col-4 item" >
-      <div class="thumbnail product-card">
-        <%= link_to product do %>
-          <%= image_tag product.image.url(:thumb) if product.image? %>
-          <div class="caption">
-            <h3><%= product.price %> $</h3>
-            <h4><%= product.name.upcase %></h4>
-            <h4>
-              <%= t "views.products.index.ratescore" %>
-              <%= product.rate_score %>
-            </h4>
-          </div>
-        <% end %>
+  <% if @products.any? %>
+    <% @products.each do |product| %>
+      <div class="col-4 item" >
+        <div class="thumbnail product-card">
+          <%= link_to product do %>
+            <%= image_tag product.image.url(:thumb) if product.image? %>
+            <div class="caption">
+              <h3><%= product.price %> $</h3>
+              <h4><%= product.name.upcase %></h4>
+              <h4>
+                <%= t "views.products.index.ratescore" %>
+                <%= product.rate_score %>
+              </h4>
+            </div>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  <%end%>
 </div>
 <%= will_paginate %>
