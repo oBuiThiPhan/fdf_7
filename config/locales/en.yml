@@ -64,6 +64,7 @@ en:
         create_success: "%{objects} created success!"
         create_error: "%{objects} is not created."
         update_success: "%{objects} updated success!"
+        update_error: "%{objects} is not updated!"
         destroy_success: "%{objects} destroyed success!"
         destroy_error: "%{objects} is not delete!"
   activerecord:
@@ -76,6 +77,7 @@ en:
       ago: "ago."
       rating: "Rating: "
       content: "Content: "
+      edit: "edit"
     products:
       show:
         createcomment: "Create comment"

@@ -8,8 +8,9 @@ class Ability
     elsif user.member?
       can :read, :all
       can :show, User
-      can [:edit, :update], User, id: user.id
-      can [:read, :create], Comment
+      can :update, User, id: user.id
+      can :create, Comment
+      can :update, Comment, user_id: user.id
     else
       can :read, Product
       can :read, Comment

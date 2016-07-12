@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
 
   resources :products, only: [:index, :show] do
-    resources :comments, only: [:new, :create]
+    resources :comments, except: [:index, :destroy, :show]
   end
 
   namespace :admin do
