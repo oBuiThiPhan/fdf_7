@@ -41,6 +41,7 @@
                 <%= t "views.products.index.ratescore" %>
                 <%= product.rate_score %>
               </h4>
+              <%= link_to t("products.addtocart"), "/cart/#{product.id}" %>
             </div>
           <% end %>
         </div>
