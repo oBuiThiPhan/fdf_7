@@ -21,6 +21,7 @@
 
 en:
   products:
+    empty: "Empty your cart"
     addtocart: "add to cart"
     name: "Name product"
     rate: "Ratescore"
@@ -28,6 +29,12 @@ en:
     and: "and"
     search: "Search"
     classify: "Classify"
+    description: "Description"
+    price: "Price"
+    image: "Image"
+    quantity: "Quantity"
+    yourcart: "Your cart"
+    create_success: "add product success!"
     show:
       quantity: "Quantity in store: "
       noproduct: "There are not this products in the store"

@@ -1,0 +1,38 @@
+<h1><%= t"products.yourcart"%></h1>
+<%= link_to t("products.empty"), cart_clear_path%>
+<table class="table table-hover">
+  <thead>
+    <tr class="info">
+      <th><%= t "products.name" %></th>
+      <th><%= t "products.description" %></th>
+      <th><%= t "products.price" %></th>
+      <th><%= t "products.image" %></th>
+      <th><%= t "products.quantity" %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @product_with_quantity.each do |product, quantity|%>
+      <tr>
+        <td><%= link_to product.name, product_path(product) %></td>
+        <td><%= product.description %></td>
+        <td><%= product.price %></td>
+        <td>
+          <% if product.image.present? %>
+            <%= link_to image_tag(product.image, size: Settings.admin.size),
+              product_path(product) %>
+          <% else %>
+            <%= link_to image_tag(Settings.admin.url,
+              size: Settings.admin.size),"#" %>
+          <% end %>
+        </td>
+        <td><%= quantity %></td>
+        <td>
+          <%= link_to t("views.admin.category.index.editbutton"),
+            "#", class:"btn btn-info" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
