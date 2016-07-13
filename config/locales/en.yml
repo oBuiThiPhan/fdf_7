@@ -51,7 +51,7 @@ en:
       ten1: "Hoang Thi Lanh"
       ten2: "Bui Thi Phan"
       title: "Home"
-      signupnow: "Sign up now"
+      signupnow: "Sign up"
   layout:
     header:
       login: "Log in"
@@ -85,6 +85,7 @@ en:
       rating: "Rating: "
       content: "Content: "
       edit: "edit"
+      delete: "delete"
     products:
       show:
         createcomment: "Create comment"

@@ -38,6 +38,20 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    respond_to do |format|
+      if @comment.destroy
+        flash[:success] = t "controllers.flash.common.destroy_success",
+          objects: t("activerecord.model.comment")
+      else
+        flash[:danger] = t "controllers.flash.common.destroy_error",
+          objects: t("activerecord.model.comment")
+      end
+      format.html {redirect_to @product_path}
+      format.js
+    end
+  end
+
   private
   def comment_params
     params.require(:comment).permit :user_id, :content, :rating
