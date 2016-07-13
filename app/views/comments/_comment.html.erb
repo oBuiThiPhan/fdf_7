@@ -1,19 +1,25 @@
-<div class="comment-card">
-  <%= image_tag comment.user.avatar.url, size: "30x30" %>
-  <span>
-    <%= comment.user.name %>
-  </span>
-  <span class="time-ago-in-words pull-right">
-    <%= time_ago_in_words(comment.created_at) %>
-    <%= t("views.comments.ago") %>
-  </span>
-  <div>
-    <% if can? :update, Comment %>
-      <%= link_to t("views.comments.edit"),
-        edit_product_comment_path(comment.product, comment), remote: true %>
-    <% end %>
-  </div>
-  <div id="edit-<%=comment.id%>-comment">
-    <%= render partial: "comments/show_comment", locals: {comment: comment} %>
+<div id="delete-<%=comment.id%>-comment">
+  <div class="comment-card">
+    <%= image_tag comment.user.avatar.url,
+      size: Settings.product.comment.avatar_size %>
+    <span>
+      <%= comment.user.name %>
+    </span>
+    <span class="time-ago-in-words pull-right">
+      <%= time_ago_in_words(comment.created_at) %>
+      <%= t("views.comments.ago") %>
+    </span>
+    <div>
+      <% if can? :update_destroy, Comment %>
+        <%= link_to t("views.comments.edit"),
+          edit_product_comment_path(comment.product, comment), remote: true %>
+        <%= link_to t("views.comments.delete"),
+          product_comment_path(comment.product, comment),
+          method: :delete, remote: true %>
+      <% end %>
+    </div>
+    <div id="edit-<%=comment.id%>-comment">
+      <%= render partial: "comments/show_comment", locals: {comment: comment} %>
+    </div>
   </div>
 </div>

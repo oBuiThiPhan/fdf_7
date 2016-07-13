@@ -9,3 +9,5 @@ role:
 product:
   show:
     size: "350x400"
+  comment:
+    avatar_size: "30x30"

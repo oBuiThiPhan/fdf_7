@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "static_pages#home"
+  root "products#index"
   get "/cart" =>"cart#index"
   get "/cart/clear" => "cart#destroy"
   get "/cart/:id" =>"cart#create"
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
 
   resources :products, only: [:index, :show] do
-    resources :comments, except: [:index, :destroy, :show]
+    resources :comments, except: [:index, :show]
   end
   resources :cart, only: [:index]
 
