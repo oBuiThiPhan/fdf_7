@@ -10,7 +10,7 @@ class Comment < ActiveRecord::Base
   private
   def calculate_score
     total = product.comments.reduce(0) {|total, element| total + element.rating}
-    average_score = total / product.comments.count
+    average_score = total / product.comments.pluck("DISTINCT user_id").count
     product.update_attribute :rate_score, average_score
   end
 end

@@ -1,3 +1,6 @@
 <% provide :button_text, t("views.admin.category.new.button") %>
-
-<%= render "comments/form" %>
+<% if @exist_comments.any? %>
+  <%= render "comments/form_for_exist_comment" %>
+<% else %>
+  <%= render "comments/form" %>
+<% end %>

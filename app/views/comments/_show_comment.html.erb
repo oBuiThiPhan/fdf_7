@@ -1,0 +1,12 @@
+ <% if comment.rating > 0.0 %>
+  <div>
+    <%= t "views.comments.rating" %>
+    <%= comment.rating %>
+  </div>
+<% end %>
+<% if comment.content.present? %>
+  <div>
+    <%= t "views.comments.content" %>
+    <%= comment.content %>
+  </div>
+<% end %>
