@@ -1,0 +1,41 @@
+<h1><%= t "views.suggests.index.dashboard" %></h1>
+
+<table class="table table-hover">
+  <tr>
+    <th><%= t "views.suggests.index.stt" %></th>
+    <th><%= t "views.suggests.index.picture" %></th>
+    <th><%= t "views.suggests.index.content" %></th>
+    <th><%= t "views.suggests.index.category" %></th>
+    <th><%= t "views.suggests.index.status" %></th>
+  </tr>
+  <% @suggests.each_with_index do |suggest, index| %>
+    <tr>
+      <td> <%= index + 1 %> </td>
+      <td>
+        <%= image_tag suggest.picture.url,
+          size: Settings.suggest.index.size if suggest.picture? %>
+      </td>
+      <td> <%= suggest.content %> </td>
+      <td> <%= suggest.category.title %> </td>
+      <td>
+        <% if suggest.status %>
+          <span class="btn btn-success">
+            <%= t "views.admin.suggests.index.done" %>
+          </span>
+        <% else %>
+          <span>
+            <%= link_to t("views.suggests.index.cancelbutton"),
+              suggest_path(suggest), method: :delete,
+              data: {confirm: t("views.suggests.index.delete_confirm")},
+              class:"btn btn-info" %>
+          </span>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<div>
+<%= link_to t("views.suggests.index.newsuggestbutton"), new_suggest_path,
+  class: "btn btn-info" %>
+</div>
+<%= paginate @suggests %>

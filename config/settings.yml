@@ -11,3 +11,6 @@ product:
     size: "350x400"
   comment:
     avatar_size: "30x30"
+suggest:
+  index:
+    size: "50x50"
