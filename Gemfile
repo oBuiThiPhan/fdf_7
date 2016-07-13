@@ -32,6 +32,8 @@ gem "ransack"
 gem "kaminari"
 gem "social-share-button"
 gem "mini_magick"
+gem "omniauth"
+gem "omniauth-twitter"
 # bootstrap
 gem "bootstrap-sass",       "3.2.0.0"
 gem "config"

@@ -47,6 +47,10 @@
           <li><%= link_to t("static_pages.home.signupnow"),
             new_user_registration_path %>
           </li>
+          <li>
+            <%= link_to "Sign in with Twitter",
+              user_twitter_omniauth_authorize_path %>
+          </li>
         <% end %>
         <span class="icon-search-header-top">
           <%= link_to image_tag("cart.png"), "/cart" %>
