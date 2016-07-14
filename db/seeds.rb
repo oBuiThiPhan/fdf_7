@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.create(name: "admin",
             email: "admin@gmail.com",
-            role: "admin",
+            role: 2,
             password: "123456789")
 Category.create(title: "food", parent_id: nil)
 Category.create(title: "drink", parent_id: nil)
