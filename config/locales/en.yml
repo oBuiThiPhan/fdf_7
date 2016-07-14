@@ -21,6 +21,7 @@
 
 en:
   products:
+    total_price: "Total Price"
     empty: "Empty your cart"
     addtocart: "add to cart"
     name: "Name product"
