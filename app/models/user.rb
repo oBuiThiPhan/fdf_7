@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   #        :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,
-    :omniauthable, omniauth_providers: [:facebook]
+    :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   has_many :orders, dependent: :destroy
   has_many :suggests, dependent: :destroy
@@ -20,8 +20,26 @@ class User < ActiveRecord::Base
   def update_role
     self.role = Settings.role.member
   end
+  class << self  
+    def find_for_google_oauth2 access_token, signed_in_resource = nil
+      data = access_token.info
+      user = User.where(provider: access_token.provider, uid: access_token.uid ).first
+      unless user
+        registered_user = User.where(email: access_token.info.email).first
+        if registered_user
+          return registered_user
+        else
+          user = User.create(
+            name: data["name"],
+            provider: access_token.provider,
+            email: data["email"],
+            uid: access_token.uid ,
+            password: Devise.friendly_token[0,20],
+          )
+        end
+      end
+    end
 
-  class << self
     def from_omniauth auth
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.email = auth.info.email

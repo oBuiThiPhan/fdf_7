@@ -40,6 +40,7 @@ gem "bcrypt"
 gem "faker"
 gem "omniauth"
 gem "omniauth-facebook"
+gem "omniauth-google-oauth2"
 gem "figaro"
 # Use ActiveModel has_secure_passworda
 # gem "bcrypt", "~> 3.1.7"
