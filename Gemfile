@@ -38,6 +38,9 @@ gem "config"
 # Working with user password
 gem "bcrypt"
 gem "faker"
+gem "omniauth"
+gem "omniauth-facebook"
+gem "figaro"
 # Use ActiveModel has_secure_passworda
 # gem "bcrypt", "~> 3.1.7"
 
