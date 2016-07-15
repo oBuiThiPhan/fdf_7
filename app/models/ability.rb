@@ -15,6 +15,7 @@ class Ability
       can :create, Comment
       can :update_destroy, Comment, user_id: user.id
       can [:create, :destroy], Suggest
+      can :create, Order
     else
       can :read, Product
       can :read, Comment

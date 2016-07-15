@@ -12,16 +12,17 @@ class CartController < ApplicationController
     end
     cart = session[:cart]
     cart[id] = cart[id] ? (cart[id] + 1) : 1
-    redirect_to products_path	
+    redirect_to products_path
   end
 
   def update
     session[:cart][params[:id]] = params[:quantity]
-    redirect_to cart_path 
+    redirect_to cart_path
   end
 
   def destroy
     session[:cart][params[:id]] = nil
+    session[:cart].delete_if {|key, value| value.blank?}
     redirect_to action: :index
   end
 end

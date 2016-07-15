@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   get "about" => "static_pages#about"
   get "contact" => "static_pages#contact"
   post "/cart/:id" => "cart#update"
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    resource :orders, only: [:new, :create, :show]
+  end
 
   resources :suggests, except: [:show, :edit, :update]
 

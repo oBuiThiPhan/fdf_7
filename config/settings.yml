@@ -7,6 +7,8 @@ admin:
 role:
   member: 1
 product:
+  index:
+    size: "200x150"
   show:
     size: "350x400"
   comment:
@@ -14,3 +16,6 @@ product:
 suggest:
   index:
     size: "50x50"
+zero: 0
+avatar:
+  url: "avatar.jpg"
