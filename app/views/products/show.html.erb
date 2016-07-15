@@ -7,6 +7,7 @@
     <h2>
       <strong><%= @product.name %> - <%= @product.category.title %></strong>
     </h2>
+    <%= social_share_button_tag(@product.name) %>
     <h4><%= @product.description %></h4>
     <h3>
       <div id="rate-score">
@@ -15,7 +16,7 @@
     </h3>
     <h3><%= @product.price %> $</h3>
     <h4><%= t ".quantity" %><%= @product.quantity %></h4>
-    <%= link_to t("products.addtocart"), "/cart/#{product.id}" %>
+    <%= link_to t("products.addtocart"), "/cart/#{@product.id}" %>
     </button>
 
     <% if can? :create, Comment %>

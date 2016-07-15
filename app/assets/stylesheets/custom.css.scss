@@ -1,5 +1,17 @@
+@import "social-share-button";
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+$size: 24px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
+}
+
 body {
   padding-top: 18px;
 }
