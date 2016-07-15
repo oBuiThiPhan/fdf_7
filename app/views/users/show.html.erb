@@ -15,4 +15,28 @@
     </h3>
     <h4><%= link_to t("layout.header.editprofile"), edit_user_path %></h4>
   </div>
+
+  <div class="col-md-8">
+    <h2><%= t "users.show.historyorder" %></h2>
+    <br>
+    <ul class="nav nav-pills nav-justified">
+      <li>
+        <%= link_to t("users.show.orderthismonth"), "#order-this-month",
+          data: {toggle: "tab"} %>
+      </li>
+      <li>
+        <%= link_to t("users.show.all"), "#all-order", data: {toggle: "tab"} %>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="order-this-month" class="tab-pane fade in active">
+        <%= render partial: "users/orders", locals: {orders: @orders_this_month} %>
+      </div>
+      <div id="all-order" class="tab-pane fade">
+        <%= render partial: "users/orders", locals: {orders: @orders_last_month_ago} %>
+      </div>
+    </div>
+
+  </div>
 </div>

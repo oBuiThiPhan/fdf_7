@@ -49,7 +49,7 @@
   <% if can? :create, Order %>
     <span class="btn btn-info active">
       <%= link_to t("views.cart.index.order"),
-        current_user ? new_user_orders_path(current_user) : new_user_session_path %>
+        current_user ? new_user_order_path(current_user) : new_user_session_path %>
     </span>
   <% end %>
   <% else %>

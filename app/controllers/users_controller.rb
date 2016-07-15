@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
-  
+
   def show
+    @orders_last_month_ago = Order.last_month_ago_of(@user)
+      .order(created_at: :desc).page params[:page]
+    @orders_this_month = Order.in_this_month_of(@user)
+      .order(created_at: :desc).page params[:page]
   end
-  
+
   def edit
   end
 

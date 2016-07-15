@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
-  before_action :load_user, :load_session_cart, only: [:new, :create, :show]
   load_and_authorize_resource
+  before_action :load_user, only: [:new, :create, :show]
+  before_action :load_session_cart, only: [:new, :create]
 
   def new
     @order = @user.orders.build
@@ -18,15 +19,14 @@ class OrdersController < ApplicationController
       end
       @session_cart.clear
       flash[:success] = t "orders.create.saved"
+      redirect_to user_order_path(@user, @order)
     else
       flash[:danger] = t "orders.create.nosave"
       redirect_to root_url
     end
-    redirect_to @user
   end
 
   def show
-    @order = Order.find_by id: params[:id]
     @order_details = LineItem.order_number(@order)
       .pluck(:product_id, :each_quantity).map do |product_id, each_quantity|
       [Product.find_by(id: product_id), each_quantity]
