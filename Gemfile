@@ -29,7 +29,7 @@ gem "devise"
 gem "cancancan"
 gem "carrierwave"
 gem "ransack"
-
+gem "kaminari"
 gem "mini_magick"
 # bootstrap
 gem "bootstrap-sass",       "3.2.0.0"

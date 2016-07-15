@@ -11,14 +11,18 @@ Rails.application.routes.draw do
   post "/cart/:id" => "cart#update"
   resources :users, only: [:show, :edit, :update]
 
+  resources :suggests, except: [:show, :edit, :update]
+
   resources :products, only: [:index, :show] do
     resources :comments, except: [:index, :show]
   end
   resources :cart
 
   namespace :admin do
+    root "products#index"
     resources :categories, except: :show
     resources :users, only: [:index, :destroy]
     resources :products, except: :show
+    resources :suggests
   end
 end

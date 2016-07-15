@@ -62,11 +62,15 @@ en:
       editprofile: "Edit profile"
       profile: "Profile"
       products: "Products"
+      suggest: "Suggests"
     footer:
       about: "About"
       help: "Help"
       contact: "Contact"
   controllers:
+    suggests:
+      flash:
+        status: "You  have already accepted a suggest of %{objects}"
     flash:
       common:
         create_success: "%{objects} created success!"
@@ -80,7 +84,22 @@ en:
       category: "Category"
       product: "Product"
       comment: "Commnet"
+      suggest: "Suggest"
   views:
+    suggests:
+      new:
+        title: "Suggest more food/drink"
+        createbutton: "Create"
+        picturesuggest: "You have picture for this suggest?"
+      index:
+        dashboard: "All suggest you send"
+        stt: "STT"
+        category: "Category"
+        content: "Content"
+        status: "Status"
+        cancelbutton: "Cancel"
+        newsuggestbutton: "New suggest"
+        delete_confirm: "Are you sure?"
     comments:
       ago: "ago."
       rating: "Rating: "
@@ -98,6 +117,10 @@ en:
         message: "The form contains"
         name: "error"
     admin:
+      suggests:
+        index:
+          deletebutton: "Accept"
+          done: "done"
       product:
         form:
           category: "Category"

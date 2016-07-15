@@ -1,0 +1,25 @@
+<h1><%= t "views.suggests.new.title" %></h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @suggest, html: {multipart: true} do |f| %>
+      <%= render partial: "shared/error_messages", locals: {object: @suggest} %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+
+      <span>
+        <strong><%= t("views.admin.category.form.classify") %>: </strong>
+        <%= f.select :category_id,
+          options_for_select(@categories.collect {|c| [c.title, c.id]}) %>
+      </span>
+      <br>
+      <span>
+        <%= f.label :content %>:
+        <%= f.text_area :content, class: "form-control" %>
+      </span>
+      <span>
+        <strong><%= t "views.suggests.new.picturesuggest" %></strong>
+        <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png" %>
+      </span>
+      <%= f.submit t("views.suggests.new.createbutton"), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -13,11 +13,17 @@
               admin_products_path %></li>
             <li><%= link_to t("admin.list_user"), admin_users_path %>
             </li>
+            <li>
+              <%= link_to t("layout.header.suggest"), admin_suggests_path %>
+            </li>
           <% end %>
 
           <% unless current_user.admin? %>
             <li>
               <%= link_to t("layout.header.products"), products_path %>
+            </li>
+            <li>
+              <%= link_to t("layout.header.suggest"), suggests_path %>
             </li>
           <% end %>
 
