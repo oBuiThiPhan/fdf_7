@@ -20,6 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  orders:
+    create:
+      saved: "You already create new order"
+      nosave: "Your new order is not saved"
+    new:
+      shipaddress: "Send us your address for shipping: "
   products:
     total_price: "Total Price"
     empty: "Empty your cart"
@@ -100,6 +106,11 @@ en:
         cancelbutton: "Cancel"
         newsuggestbutton: "New suggest"
         delete_confirm: "Are you sure?"
+    cart:
+      index:
+        order: "Order this cart"
+        noitemcart: "There no product in your cart, would you want to add some?"
+        newcart: "Add new to my cart"
     comments:
       ago: "ago."
       rating: "Rating: "
@@ -157,11 +168,13 @@ en:
           classify: "Classify"
   user:
     edit: "Profile updated"
-    name: "Name"
-    email: "Email"
-    phone: "Phone_number"
-    address: "Address"
+    name: "Name: "
+    email: "Email: "
+    phone: "Phone_number: "
+    address: "Address: "
     avatar: "Avatar"
+    coin: "Coins: "
+    owe: "Your coin is now negative!"
     notice: "Are you sure?"
     Update: "Update"
     Cancel: "Cancel"

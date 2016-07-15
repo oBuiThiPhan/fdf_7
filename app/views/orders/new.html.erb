@@ -1,0 +1,35 @@
+<table class="table table-hover">
+  <thead>
+    <tr class="info">
+      <th><%= t "products.image" %></th>
+      <th><%= t "products.name" %></th>
+      <th><%= t "products.description" %></th>
+      <th><%= t "products.quantity" %></th>
+      <th><%= t "products.price" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @product_with_quantity.each do |product, quantity| %>
+      <tr>
+        <td>
+          <%= image_tag product.image.url,
+            size: Settings.admin.size if product.image? %>
+        </td>
+        <td><%= product.name %></td>
+        <td><%= product.description %></td>
+        <td><%= quantity %></td>
+        <td><%= product.price * quantity.to_i %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<hr>
+<%= form_for [@user, @order] do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  <h4><%= t "orders.new.shipaddress" %></h4>
+  <%= f.text_field :shipping_address, class: "form-control" %>
+  <br>
+
+  <%= f.submit t("views.cart.index.order"), class: "btn btn-danger" %>
+<% end %>

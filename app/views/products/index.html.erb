@@ -18,14 +18,14 @@
       <%= f.label :price_gteq, t("products.pricebet") %>
       <%= f.text_field :price_gteq %>
       <%= f.label :price_lteq, t("products.and") %>
-      <%= f.text_field :price_lteq %>    
+      <%= f.text_field :price_lteq %>
     </div>
     <%= f.sort_fields do |s| %>
       <%= s.sort_select %>
     <% end %>
     <div class = "actions"><%= f.submit t ("products.search")%></div>
   <% end %>
-   
+
 </div>
 <div class="row">
   <% if @products.any? %>
@@ -41,7 +41,8 @@
                 <%= t "views.products.index.ratescore" %>
                 <%= product.rate_score %>
               </h4>
-              <%= link_to t("products.addtocart"), "/cart/#{product.id}", remote: true %>
+              <%= link_to t("products.addtocart"), "/cart/#{product.id}",
+                remote: true, class: "btn btn-primary" %>
             </div>
           <% end %>
         </div>
