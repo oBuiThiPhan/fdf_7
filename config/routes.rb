@@ -26,5 +26,6 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :destroy]
     resources :products, except: :show
     resources :suggests
+    resources :orders, only: [:index, :show]
   end
 end

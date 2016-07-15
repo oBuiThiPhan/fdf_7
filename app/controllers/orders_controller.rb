@@ -27,7 +27,8 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find_by id: params[:id]
-    @order_details = Line_items.order_number(@order).map do |product_id, each_quantity|
+    @order_details = LineItem.order_number(@order)
+      .pluck(:product_id, :each_quantity).map do |product_id, each_quantity|
       [Product.find_by(id: product_id), each_quantity]
     end
   end

@@ -1,0 +1,26 @@
+<table class="table table-hover">
+  <thead>
+    <tr class="info">
+      <th><%= t "products.image" %></th>
+      <th><%= t "products.name" %></th>
+      <th><%= t "products.description" %></th>
+      <th><%= t "products.quantity" %></th>
+      <th><%= t "products.price" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_details.each do |product, each_quantity| %>
+      <tr>
+        <td>
+          <%= image_tag product.image.url, size: Settings.admin.size %>
+        </td>
+        <td><%= product.name %></td>
+        <td><%= product.description %></td>
+        <td><%= each_quantity %></td>
+        <td><%= product.price * each_quantity %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<hr>
+<h3><%= t "orders.show.totalprice" %><%= @order.total_price %> $</h3>

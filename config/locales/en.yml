@@ -20,7 +20,17 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  users:
+    show:
+      show: "Show detail"
   orders:
+    show:
+      totalprice: "Total Price: "
+    index:
+      stt: "STT"
+      username: "User"
+      orderdate: "Order Date"
+      totalprice: "Order total price"
     create:
       saved: "You already create new order"
       nosave: "Your new order is not saved"
@@ -180,6 +190,7 @@ en:
     Cancel: "Cancel"
     password: "password"
   admin:
+    orders: "User's Order"
     delete: "Delete"
     list_user: "List user"
     messages: "Are you sure?"
