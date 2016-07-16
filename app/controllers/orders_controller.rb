@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
       @session_cart.clear
       flash[:success] = t "orders.create.saved"
       redirect_to user_order_path(@user, @order)
+      SendEmailWorker.perform_async @order.id
     else
       flash[:danger] = t "orders.create.nosave"
       redirect_to root_url

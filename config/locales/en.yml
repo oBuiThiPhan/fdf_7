@@ -27,6 +27,8 @@ en:
       all: "Orders older from last month"
       show: "Show detail"
       historyorder: "History Order"
+  mail:
+    ordertitle: "New order from user"
   orders:
     show:
       totalprice: "Total Price: "
