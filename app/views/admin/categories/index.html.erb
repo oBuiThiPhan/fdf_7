@@ -7,6 +7,7 @@
     <th><%= t "views.admin.category.index.parent_id" %></th>
     <th><%= t "views.admin.category.index.function" %></th>
   </tr>
+  <%= paginate @categories%>
   <% @categories.each do |category| %>
     <tr>
       <td> <%= category.id %> </td>

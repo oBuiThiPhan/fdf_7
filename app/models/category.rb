@@ -8,4 +8,5 @@ class Category < ActiveRecord::Base
   validates :title, presence: true
 
   scope :parent_category, ->{where parent_id: nil}
+  scope :children, ->{where.not parent_id: nil}
 end

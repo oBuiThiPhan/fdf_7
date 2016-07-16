@@ -31,7 +31,7 @@
     <% if can? :read, Comment %>
       <div id="show-comment">
         <%= render @comments %>
-        <%= will_paginate @comments %>
+        <%= paginate @comments %>
       </div>
     <% end %>
   </div>

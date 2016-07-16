@@ -2,7 +2,7 @@ class Admin::CategoriesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @categories = @categories.where.not(parent_id: nil).order("parent_id")
+    @categories = Category.children.order("parent_id").page params[:page]
   end
 
   def new
