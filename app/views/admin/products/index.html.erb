@@ -9,6 +9,7 @@
     <th><%= t "views.admin.product.index.quantity" %></th>
     <th><%= t "views.admin.category.index.function" %></th>
   </tr>
+  <%= paginate @products%>
   <% @products.each do |product| %>
     <tr>
       <td><%= product.id %></td>

@@ -9,6 +9,7 @@
     <th><%= t "views.suggests.index.usename" %></th>
     <th><%= t "views.suggests.index.status" %></th>
   </tr>
+  <%= paginate @suggests%>
   <% @suggests.each_with_index do |suggest, index| %>
     <tr>
       <td> <%= index + 1 %> </td>
