@@ -2,24 +2,22 @@
   <thead>
     <tr class="info">
       <th><%= t "orders.index.stt" %></th>
-      <th><%= t "orders.index.username" %></th>
       <th><%= t "orders.index.orderdate" %></th>
       <th><%= t "orders.index.totalprice" %></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <% @orders.each_with_index do |order, index| %>
+    <% orders.each_with_index do |order, index| %>
       <tr>
         <td> <%= index + 1 %> </td>
-        <td><%= link_to order.user.name, order.user %></td>
         <td><%= order.created_at.to_time %></td>
         <td><%= order.total_price %> $</td>
         <td>
-          <%= link_to t("users.show.show"), admin_order_path(order),
+          <%= link_to t("users.show.show"), user_order_path(@user, order),
             class: "btn btn-info" %>
         </td>
       </tr>
     <% end %>
-    <%= paginate @orders %>
   </tbody>
+</table>

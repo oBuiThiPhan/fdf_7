@@ -23,6 +23,10 @@ en:
   users:
     show:
       show: "Show detail"
+      orderthismonth: "In this month"
+      all: "Orders older from last month"
+      show: "Show detail"
+      historyorder: "History Order"
   orders:
     show:
       totalprice: "Total Price: "
@@ -47,7 +51,7 @@ en:
     search: "Search"
     classify: "Classify"
     description: "Description"
-    price: "Price"
+    price: "Price($)"
     image: "Image"
     quantity: "Quantity"
     yourcart: "Your cart"
