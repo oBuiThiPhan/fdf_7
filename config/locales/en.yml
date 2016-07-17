@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  cart:
+    nullproduct: "This product is now null in the store"
+    nomoreproduct: "There are no more product in the store!"
   users:
     show:
       show: "Show detail"
@@ -48,8 +51,8 @@ en:
     addtocart: "add to cart"
     name: "Name product"
     rate: "Ratescore"
-    pricebet: "Price between"
-    and: "and"
+    pricebet: "From"
+    and: "to"
     search: "Search"
     classify: "Classify"
     description: "Description"
