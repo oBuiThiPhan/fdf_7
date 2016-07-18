@@ -53,7 +53,7 @@
               <h4><%= product.name.upcase %></h4>
               <h4>
                 <%= t "views.products.index.ratescore" %>
-                <%= product.rate_score %>
+                <div class="average-comment-rating" data-score="<%= product.rate_score %>"></div>
               </h4>
               <%= link_to t("products.addtocart"), "/cart/#{product.id}",
                 method: :post, class: "btn btn-primary" %>
