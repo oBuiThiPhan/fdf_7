@@ -9,10 +9,11 @@
     </tr>
   </thead>
   <tbody>
-    <% @order_details.each do |product, each_quantity| %>
+    <% order_details.each do |product, each_quantity| %>
       <tr>
         <td>
-          <%= image_tag product.image.url, size: Settings.admin.size %>
+          <%= image_tag product.image.url,
+            size: Settings.admin.size if product.image? %>
         </td>
         <td><%= link_to product.name, product %></td>
         <td><%= product.description %></td>
@@ -23,4 +24,4 @@
   </tbody>
 </table>
 <hr>
-<h3><%= t "orders.show.totalprice" %><%= @order.total_price %> $</h3>
+<h3><%= t "orders.show.totalprice" %><%= order.total_price %> $</h3>

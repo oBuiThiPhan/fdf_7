@@ -1,1 +1,2 @@
-<%= render "orders/show" %>
+<%= render partial: "orders/show",
+  locals: {order_details: @order_details, order: @order} %>
