@@ -1,6 +1,6 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top header-bar">
   <div class="container">
-    <%= link_to t("project_name"), "#", id: "logo" %>
+    <%= link_to t("project_name"), root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to t("static_pages.home.title"), root_path %></li>
@@ -49,10 +49,9 @@
           <li><%= link_to t("layout.header.login"), new_user_session_path %></li>
         </li>
         <% end %>
-        <span class="icon-search-header-top">
-          <%= link_to image_tag("cart.png"), "/cart" %>
-            </div>
-        </span>
+        <%= link_to "/cart" do %>
+          <span class="glyphicon glyphicon-shopping-cart fa-size"></span>
+        <% end %>
       </ul>
     </nav>
   </div>

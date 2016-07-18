@@ -20,3 +20,6 @@ suggest:
 zero: 0
 avatar:
   url: "avatar.jpg"
+image:
+  urlfood: "food.jpg"
+  urldrink: "drink.jpg"

@@ -17,8 +17,8 @@
     <h3><%= @product.price %> $</h3>
     <h4><%= t ".quantity" %><%= @product.quantity %></h4>
     <h3>
-      <%= link_to t("products.addtocart"), "/cart/#{@product.id}", remote: true,
-        class: "btn btn-primary" %>
+      <%= link_to t("products.addtocart"), "/cart/#{@product.id}",
+        method: :post, class: "btn btn-primary" %>
     </h3>
 
     <% if can? :create, Comment %>

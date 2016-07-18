@@ -20,12 +20,13 @@
 
       <td>
         <span>
-          <%= link_to t("views.admin.category.index.editbutton"),
-            edit_admin_product_url(product), class:"btn btn-info" %>
-          <%= link_to t("views.admin.category.index.deletebutton"),
-            admin_product_url(product), method: :delete,
-            data: {confirm: t("views.admin.category.index.deleteconfirm")},
-            class:"btn btn-danger" %>
+          <%= link_to edit_admin_product_url(product) do %>
+            <span class="glyphicon glyphicon-pencil"></span>
+          <% end %>
+          <%= link_to admin_product_url(product), method: :delete,
+            data: {confirm: t("views.admin.category.index.deleteconfirm")} do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
         </span>
       </td>
     </tr>

@@ -28,7 +28,7 @@
               <% end %>
             </td>
             <td>
-              <%= form_tag "/cart/#{product.id}", method: :post do %>
+              <%= form_tag "/cart/#{product.id}", method: :patch do %>
                 <%= number_field_tag :quantity, {}, value: quantity, min: "1",
                   max: product.quantity, style: "width: 50px;" %>
                 <%= submit_tag t("views.admin.category.index.editbutton"), class:"btn btn-info"%>
