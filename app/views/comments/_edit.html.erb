@@ -1,6 +1,2 @@
 <% provide :button_text, t("views.admin.category.edit.button") %>
-<% if @comment.rating > 0 %>
-  <%= render "comments/form" %>
-<% else %>
-  <%= render "comments/form_for_exist_comment" %>
-<% end %>
+<%= render "comments/form" %>

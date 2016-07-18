@@ -10,9 +10,7 @@
     <%= social_share_button_tag(@product.name) %>
     <h4><%= @product.description %></h4>
     <h3>
-      <div id="rate-score">
-        <%= @product.rate_score %>
-      </div>
+      <div class="average-comment-rating" data-score="<%= @product.rate_score %>"></div>
     </h3>
     <h3><%= @product.price %> $</h3>
     <h4><%= t ".quantity" %><%= @product.quantity %></h4>
@@ -22,11 +20,15 @@
     </h3>
 
     <% if can? :create, Comment %>
-      <div id="comment">
-        <%= link_to t("views.products.show.createcomment"),
-          new_product_comment_path(@product), remote: true %>
-      </div>
-      <div id="new-comment"></div>
+      <%= form_for [@product, @comment], remote: true do |f| %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.label :rating %>
+        <div id="rating-form">
+        </div>
+        <%= f.label :content %>
+        <%= f.text_area :content %>
+        <%= f.submit yield: :button_text, class: "btn btn-primary" %>
+      <% end %>
     <% end %>
     <% if can? :read, Comment %>
       <div id="show-comment">

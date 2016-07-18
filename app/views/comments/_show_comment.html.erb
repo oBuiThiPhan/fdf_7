@@ -1,8 +1,5 @@
- <% if comment.rating > 0.0 %>
-  <div>
-    <%= t "views.comments.rating" %>
-    <%= comment.rating %>
-  </div>
+<% if comment.rating > 0.0 %>
+  <div class="comment-rating" data-score="<%= comment.rating %>" ></div>
 <% end %>
 <% if comment.content.present? %>
   <div>
