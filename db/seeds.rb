@@ -9,5 +9,7 @@ User.create(name: "admin",
             email: "admin@gmail.com",
             role: 2,
             password: "123456789")
-Category.create(title: "food", parent_id: nil)
-Category.create(title: "drink", parent_id: nil)
+Category.create(id: 1, title: "food", parent_id: nil)
+Category.create(id: 2, title: "drink", parent_id: nil)
+Category.create([{title: "soda", parent_id: 2},
+  {title: "sea food", parent_id: 1}])

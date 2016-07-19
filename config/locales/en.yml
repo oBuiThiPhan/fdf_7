@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  chatworks:
+    you_requseted_order_in_app: "You requseted order in app"
   cart:
     nullproduct: "This product is now null in the store"
     nomoreproduct: "There are no more product in the store!"
@@ -127,6 +129,7 @@ en:
         delete_confirm: "Are you sure?"
     cart:
       index:
+        more: "More"
         order: "Order this cart"
         noitemcart: "There no product in your cart, would you want to add some?"
         newcart: "Add new to my cart"

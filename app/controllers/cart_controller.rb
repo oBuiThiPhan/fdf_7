@@ -8,16 +8,16 @@ class CartController < ApplicationController
   end
 
   def create
+    id = params[:id]
+    unless session[:cart]
+      session[:cart] = {}
+    end
+    cart = session[:cart]
     session_quantity = session[:cart][params["id"]] ? session[:cart][params["id"]] : 0
     if (@product.quantity - session_quantity) <= 0
       flash[:danger] = t "cart.nullproduct"
       redirect_to products_path
     else
-      id = params[:id]
-      unless session[:cart]
-        session[:cart] = {}
-      end
-      cart = session[:cart]
       cart[id] = cart[id] ? (cart[id] + 1) : 1
       redirect_to cart_path
     end
