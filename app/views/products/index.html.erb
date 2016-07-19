@@ -1,5 +1,4 @@
 <div class="panel search-padding">
-  <center><h1><%= t "views.products.index.h1" %></h1></center>
   <%= search_form_for @search do |f|%>
     <table class="table-padding">
       <tr>
@@ -46,8 +45,7 @@
       <div class="col-4 item" >
         <div class="thumbnail product-card">
           <%= link_to product do %>
-            <%= image_tag product.image.url,
-              size: Settings.product.index.size if product.image? %>
+            <%= image_tag product.image.url(:thumb) if product.image? %>
             <div class="caption">
               <h3><%= product.price %> $</h3>
               <h4><%= product.name.upcase %></h4>
@@ -62,5 +60,7 @@
         </div>
       </div>
     <% end %>
+  <% else %>
+    <h4><%= t "products.noresult" %></h4>
   <%end%>
 </div>

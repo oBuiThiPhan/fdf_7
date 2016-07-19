@@ -7,7 +7,7 @@
     <h2>
       <strong><%= @product.name %> - <%= @product.category.title %></strong>
     </h2>
-    <%= social_share_button_tag(@product.name) %>
+    <%= social_share_button_tag(@product.name, url: @product) %>
     <h4><%= @product.description %></h4>
     <h3>
       <div class="average-comment-rating" data-score="<%= @product.rate_score %>"></div>
@@ -18,16 +18,17 @@
       <%= link_to t("products.addtocart"), "/cart/#{@product.id}",
         method: :post, class: "btn btn-primary" %>
     </h3>
-
-    <% if can? :create, Comment %>
-      <%= form_for [@product, @comment], remote: true do |f| %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.label :rating %>
-        <div id="rating-form">
-        </div>
-        <%= f.label :content %>
-        <%= f.text_area :content %>
-        <%= f.submit yield: :button_text, class: "btn btn-primary" %>
+    <% if user_signed_in? %>
+      <% if can? :create, Comment %>
+        <%= form_for [@product, @comment], remote: true do |f| %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.label :rating %>
+          <div id="rating-form">
+          </div>
+          <%= f.label :content %>
+          <%= f.text_area :content %>
+          <%= f.submit yield: :button_text, class: "btn btn-primary" %>
+        <% end %>
       <% end %>
     <% end %>
     <% if can? :read, Comment %>
