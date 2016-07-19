@@ -7,6 +7,13 @@ class OrdersController < ApplicationController
     @order = @user.orders.build
     @product_with_quantity = @session_cart.map {|id, quantity|
       [Product.find_by(id: id), quantity]}
+    each_price = []
+    if @product_with_quantity
+      @product_with_quantity.each do |product, quantity|
+        each_price << (product.price * quantity.to_i)
+      end
+    end
+    @total = each_price.reduce(0) {|total, price| total + price}
   end
 
   def create

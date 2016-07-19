@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   def index
     @search= Product.ransack params[:q]
-    @products= @search.result.page params[:page]
+    @products= @search.result.order(quantity: :desc).page params[:page]
     @search.build_sort
   end
 

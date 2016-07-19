@@ -15,8 +15,12 @@
     <h3><%= @product.price %> $</h3>
     <h4><%= t ".quantity" %><%= @product.quantity %></h4>
     <h3>
-      <%= link_to t("products.addtocart"), "/cart/#{@product.id}",
-        method: :post, class: "btn btn-primary" %>
+      <% if @product.quantity > 0 %>
+        <%= link_to t("products.addtocart"), "/cart/#{@product.id}",
+          method: :post, class: "btn btn-primary" %>
+      <% else %>
+        <span class="btn btn-danger"><%= t "products.hethang" %> </span>
+      <% end %>
     </h3>
     <br/>
     <br/>

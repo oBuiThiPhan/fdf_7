@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes user_params
       flash[:update_success] = t "user.edit"
-      redirect_to root_path
+      redirect_to @user
     else
       render :edit
     end
@@ -22,6 +22,10 @@ class UsersController < ApplicationController
 
   private
   def user_params
+    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+      params[:user].delete :password
+      params[:user].delete :password_confirmation
+    end
     params.require(:user).permit :name, :email, :password, :password_confirmation,
       :avatar, :phone_number, :address, :chatwork_id
   end

@@ -171,3 +171,15 @@ hr {
 .panel{
   float: right;
 }
+
+.a-order {
+  color: #fff;
+  &:hover {
+    text-decoration: none;
+    color: red;
+  }
+}
+
+.form-tag {
+  width: 20%;
+}

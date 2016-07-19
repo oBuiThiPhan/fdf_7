@@ -32,8 +32,9 @@ en:
   chatworks:
     you_requseted_order_in_app: "There are new order from "
   cart:
-    nullproduct: "This product is now null in the store"
-    nomoreproduct: "There are no more product in the store!"
+    noproduct: "This product is not exist"
+    nullproduct: "This product is out of stock, please come back later"
+    nomoreproduct: "There are only %{objects} products in the store, please select less than or come back later"
   users:
     show:
       show: "Show detail"
@@ -57,6 +58,7 @@ en:
     new:
       shipaddress: "Send us your address for shipping: "
   products:
+    hethang: "Out of stock"
     noresult: "There are no result for your search"
     total_price: "Total Price"
     empty: "Empty your cart"
@@ -134,7 +136,7 @@ en:
         createbutton: "Create"
         picturesuggest: "You have picture for this suggest?"
       index:
-        dashboard: "All suggests send from users"
+        dashboard: "All suggests you send"
         category: "Category"
         content: "Content"
         status: "Status"

@@ -35,7 +35,11 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
+    session_key = @product.id
     if @product && @product.destroy
+      if session[:cart]
+        session[:cart].delete(session_key.to_s)
+      end
       flash[:success] = t "controllers.flash.common.destroy_success",
         objects: t("activerecord.model.product")
     else
