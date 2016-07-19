@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  title: "Food & Drink"
   chatworks:
     you_requseted_order_in_app: "You requseted order in app"
   cart:
@@ -48,6 +49,7 @@ en:
     new:
       shipaddress: "Send us your address for shipping: "
   products:
+    noresult: "There are no result for your search"
     total_price: "Total Price"
     empty: "Empty your cart"
     addtocart: "add to cart"
