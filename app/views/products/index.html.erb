@@ -15,9 +15,8 @@
             :children, :title, :id, :title,
             include_blank: true,class: "form-control" %>
         </td>
-        <td><%= f.text_field :name_cont, class: "form-control" %></td>
-        <td><%= f.number_field :rate_score, step: "0.5", min: "0", max: "5",
-          class: "form-control" %></td>
+        <td><%= f.text_field :name_cont %></td>
+        <td><%= f.number_field :rate_score, step: "0.5", min: "0", max: "5" %></td>
         <td>
           <%= f.label :price_gteq, t("products.pricebet") %>
           <%= f.number_field :price_gteq, step: "0.001", min: "0" %>

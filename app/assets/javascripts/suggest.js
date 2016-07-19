@@ -13,7 +13,7 @@ $(document).ready(function(){
         if(result[0].status == 'done')
         {
           $('#' + result[0].id +'-accept')
-            .html('<span class="btn btn-success">Done<span>');
+            .html('<span class="glyphicon glyphicon-ok ok"></span>');
         }
       }
     })

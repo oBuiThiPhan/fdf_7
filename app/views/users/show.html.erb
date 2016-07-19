@@ -1,10 +1,6 @@
 <div class="row">
   <div class="col-md-4">
-    <% if @user.avatar? %>
-      <%= image_tag @user.avatar.url, size: Settings.size  %>
-    <% else %>
-      <%= image_tag Settings.avatar.url, size: Settings.size %>
-    <% end %>
+    <%= image_tag @user.avatar.url, size: Settings.size  %>
     <h3><%= t "user.name" %><%= @user.name %></h3>
     <p> <%= t "user.email" %> <%= @user.email %> </p>
     <h3 class="owe">

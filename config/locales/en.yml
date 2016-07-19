@@ -20,9 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  stt: "STT"
   title: "Food & Drink"
   chatworks:
-    you_requseted_order_in_app: "You requseted order in app"
+    you_requseted_order_in_app: "There are new order from "
   cart:
     nullproduct: "This product is now null in the store"
     nomoreproduct: "There are no more product in the store!"
@@ -39,7 +40,7 @@ en:
     show:
       totalprice: "Total Price: "
     index:
-      stt: "STT"
+      h4: "Orders from users"
       username: "User"
       orderdate: "Order Date"
       totalprice: "Order total price"
@@ -97,6 +98,10 @@ en:
       help: "Help"
       contact: "Contact"
   controllers:
+    admin:
+      category:
+        destroy:
+          fail: "Can't delete this category because of its products exist"
     suggests:
       flash:
         status: "You  have already accepted a suggest of %{objects}"
@@ -121,8 +126,7 @@ en:
         createbutton: "Create"
         picturesuggest: "You have picture for this suggest?"
       index:
-        dashboard: "All suggest you send"
-        stt: "STT"
+        dashboard: "All suggests send from users"
         category: "Category"
         content: "Content"
         status: "Status"
@@ -183,7 +187,7 @@ en:
           title: "Title"
           id: "Id"
           parent_id: "Classify"
-          function: "Functions"
+          function: "Actions"
           editbutton: "Edit"
           deletebutton: "Delete"
           deleteconfirm: "Are you sure?"
@@ -191,6 +195,7 @@ en:
         form:
           classify: "Classify"
   user:
+    h4: "All users"
     edit: "Profile updated"
     name: "Name: "
     email: "Email: "
@@ -203,6 +208,8 @@ en:
     Update: "Update"
     Cancel: "Cancel"
     password: "password"
+    success: "User deleted"
+    failed: "User is not delete"
   admin:
     orders: "User's Order"
     delete: "Delete"

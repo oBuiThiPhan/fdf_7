@@ -4,10 +4,10 @@ class SendChatworkWorker
 
   def perform order_id
     @order = Order.find_by id: order_id
-    ChatWork::Message.create(room_id: @order.user.chatwork_id,
-      body: "#{I18n.t("chatworks.you_requseted_order_in_app")}")
-    ChatWork::Message.create(room_id: Settings.chatroom,
-      body: " #{@order.user.email}
-      #{I18n.t("chatworks.you_requseted_order_in_app")}")
+    if @order
+      ChatWork::Message.create(room_id: Settings.chatroom,
+        body: " #{@order.user.email}
+        #{I18n.t("chatworks.you_requseted_order_in_app")} + #{@order.user.name}")
+    end
   end
 end
