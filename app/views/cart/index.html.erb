@@ -16,19 +16,15 @@
           <% if quantity.present? %>
             <tr>
               <td>
-                <% if product.image.present? %>
-                  <%= link_to image_tag(product.image, size: Settings.admin.size),
-                    product_path(product) %>
-                <% else %>
-                  <%= link_to image_tag(Settings.admin.url,
-                    size: Settings.admin.size),"#" %>
-                <% end %>
+                <%= link_to image_tag(product.image, size: Settings.admin.size),
+                  product_path(product) %>
               </td>
               <td><%= link_to product.name, product_path(product) %></td>
               <td><%= product.price %></td>
               <td>
                 <%= form_tag "/cart/#{product.id}", method: :patch do %>
-                  <%= number_field_tag :quantity, {}, value: quantity, min: "1" %>
+                  <%= number_field_tag :quantity, {}, value: quantity, min: "1",
+                    class: "form-tag form-control" %>
                   <%= button_tag type: "submit", class: "btn btn-default" do %>
                     <i class="glyphicon glyphicon-pencil"></i>
                   <% end %>

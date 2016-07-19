@@ -1,10 +1,9 @@
 <br/>
-<div class="panel search-padding">
-  <center>
+<div class="search-padding">
   <%= search_form_for @search do |f| %>
     <table class="table-padding">
       <tr>
-        <form class="form-inline">      
+        <form class="form-inline">
           <td>
             <%= f.grouped_collection_select :category_id_eq,
               Category.parent_category.order(:title),
@@ -14,7 +13,7 @@
           <td><%= f.text_field :name_cont, class: "form-control",
             placeholder: t("products.name") %>
           </td>
-          <td><%= f.number_field :rate_score, step: "0.5", min: "0", max: "5",
+          <td><%= f.number_field :rate_score_eq, step: "0.5", min: "0", max: "5",
             class: "form-control",placeholder:t("products.rate1") %></td>
           <td>
             <%= f.number_field :price_gteq, class: "form-control",
@@ -31,7 +30,7 @@
       </tr>
     </table>
   <% end %>
-  </center>
+  <hr>
   <table class="table-padding">
     <tr>
       <td><h5><%= t("Sortby")%> </h5></td>
@@ -47,7 +46,7 @@
       <div class="col-4 item" >
         <div class="thumbnail product-card">
           <%= link_to product do %>
-            <%= image_tag product.image.url(:thumb) if product.image? %>
+            <%= image_tag product.image.url(:thumb) %>
             <div class="caption">
               <h3><%= product.price %> $</h3>
               <h4><%= product.name.upcase %></h4>
@@ -67,8 +66,8 @@
         </div>
       </div>
     <% end %>
-    <%= paginate @products %>
   <% else %>
     <h4><%= t "products.noresult" %></h4>
   <%end%>
 </div>
+<%= paginate @products %>

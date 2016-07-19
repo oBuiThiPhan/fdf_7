@@ -28,6 +28,10 @@ en:
   priceto: "price to"
   SearchCategory: "Search Category"
   searchname: "Search name"
+  back: "Back"
+  login:
+    signup: "Please sign up to create new account"
+  noorder: "This orders no exist"
   title: "Food & Drink"
   chatworks:
     you_requseted_order_in_app: "There are new order from "

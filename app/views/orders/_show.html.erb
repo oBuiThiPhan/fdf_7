@@ -1,27 +1,25 @@
 <table class="table table-hover">
   <thead>
     <tr class="info">
-      <th><%= t "products.image" %></th>
+      <th><%= t "stt" %></th>
       <th><%= t "products.name" %></th>
-      <th><%= t "products.description" %></th>
       <th><%= t "products.quantity" %></th>
       <th><%= t "products.price" %></th>
     </tr>
   </thead>
   <tbody>
-    <% order_details.each do |product, each_quantity| %>
+    <% order_details.each_with_index do |line_item, index| %>
       <tr>
-        <td>
-          <%= image_tag product.image.url,
-            size: Settings.admin.size if product.image? %>
-        </td>
-        <td><%= link_to product.name, product %></td>
-        <td><%= product.description %></td>
-        <td><%= each_quantity %></td>
-        <td><%= product.price * each_quantity %></td>
+        <% unless line_item.blank? %>
+          <td><%= index + 1 %></td>
+          <td><%= line_item.product_name %></td>
+          <td><%= line_item.each_quantity %></td>
+          <td><%= line_item.each_total_price * line_item.each_quantity %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 <hr>
 <h3><%= t "orders.show.totalprice" %><%= order.total_price %> $</h3>
+<h4><%= link_to t("back"), :back %></h4>
