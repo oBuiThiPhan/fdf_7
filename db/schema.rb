@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20160707063441) do
     t.string   "phone_number"
     t.float    "coin",                   default: 100.0
     t.text     "address"
+    t.string   "chatwork_id"
     t.string   "provider"
     t.string   "uid"
     t.string   "encrypted_password",     default: "",    null: false

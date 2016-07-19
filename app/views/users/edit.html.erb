@@ -14,6 +14,12 @@
       </div>
 
       <div class="field">
+        <%= f.label :chatwork_id %><br />
+        <%= f.text_field :chatwork_id, autocomplete: "off",
+          class: "form-control" %>
+      </div>
+
+      <div class="field">
         <%= f.label :Phone %><br />
         <%= f.phone_field :phone_number, class: "form-control" %>
       </div>
@@ -38,7 +44,7 @@
       </div>
 
       <div class="field">
-        <%= f.label :current_password %> 
+        <%= f.label :current_password %>
           <i>(we need your current password to confirm your changes)</i><br />
         <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
       </div>
@@ -52,7 +58,8 @@
       <div class="actions">
         <%= f.submit t("user.Update"), class: "btn btn-success btn-signup" %>
         <%= link_to t("user.Cancel"), root_path,
-          data:{confirm: "Are you sure?"} %> | <%= link_to "Back", :back %> 
+          data:{confirm: t("views.admin.category.index.deleteconfirm")} %> |
+          <%= link_to t("users.backs"), :back %>
       </div>
     <% end %>
   </div>

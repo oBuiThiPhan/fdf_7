@@ -52,6 +52,9 @@
         current_user ? new_user_order_path(current_user) : new_user_session_path %>
     </span>
   <% end %>
+  <h3>
+    <%= link_to t("views.cart.index.more"), products_path %>
+  </h3>
   <% else %>
   <h3>
     <%= t "views.cart.index.noitemcart" %>
