@@ -1,8 +1,8 @@
-<h1><%= t "views.suggests.index.dashboard" %></h1>
+<h4><strong><%= t "views.suggests.index.dashboard" %></strong></h4>
 
 <table class="table table-hover">
-  <tr>
-    <th><%= t "views.suggests.index.stt" %></th>
+  <tr class="info">
+    <th><%= t "stt" %></th>
     <th><%= t "views.suggests.index.picture" %></th>
     <th><%= t "views.suggests.index.content" %></th>
     <th><%= t "views.suggests.index.category" %></th>
@@ -31,8 +31,7 @@
                   class:"btn btn-info" %>
             <% end %>
           <% else %>
-            <span class="btn btn-success">
-              <%= t "views.admin.suggests.index.done" %>
+            <span class="glyphicon glyphicon-ok ok"></span>
             </span>
           <% end %>
         </div>

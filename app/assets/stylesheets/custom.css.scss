@@ -116,6 +116,7 @@ ul.gallery {
 
 .container-pading {
   padding-top: 40px;
+  padding-botton: 30px;
 }
 
 .item:hover {
@@ -134,8 +135,15 @@ hr {
 }
 
 .table-padding {
+  padding-top: 10px;
   td {
     padding: 0 5px 0 5px;
+  }
+}
+
+.table-padding2 {
+  td {
+    padding: 5px 5px 5px 5px;
   }
 }
 
@@ -152,4 +160,11 @@ hr {
 .fa-size {
   font-size: 30px;
   color:red;
+}
+.ok {
+  color: green;
+}
+
+.admin-action {
+   padding: 0 7px 0 7px;
 }

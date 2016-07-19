@@ -1,33 +1,33 @@
-<h1><%= t "views.admin.category.index.h1" %></h1>
+<h2><%= t "views.admin.category.index.h1" %></h2>
 
+<%= link_to t("views.admin.category.index.newcategorybutton"),
+  new_admin_category_path, class: "btn btn-info" %>
+<br>
+<br>
 <table class="table table-hover">
-  <tr>
-    <th><%= t "views.admin.category.index.id" %></th>
+  <tr class="info">
+    <th><%= t "stt" %></th>
     <th><%= t "views.admin.category.index.title" %></th>
     <th><%= t "views.admin.category.index.parent_id" %></th>
     <th><%= t "views.admin.category.index.function" %></th>
   </tr>
   <%= paginate @categories%>
-  <% @categories.each do |category| %>
+  <% @categories.each_with_index do |category, index| %>
     <tr>
-      <td> <%= category.id %> </td>
+      <td> <%= index + 1 %> </td>
       <td> <%= category.title %> </td>
       <% if category.parent.present? %>
         <td><%= category.parent.title %></td>
       <% end %>
       <td>
-        <span>
-          <%= link_to t("views.admin.category.index.editbutton"),
-            edit_admin_category_url(category), class:"btn btn-info" %>
-          <%= link_to t("views.admin.category.index.deletebutton"),
-            admin_category_url(category), method: :delete,
-            data: {confirm: t("views.admin.category.index.deleteconfirm")},
-            class:"btn btn-danger" %>
-        </span>
+          <%= link_to edit_admin_category_url(category) do %>
+            <span class="glyphicon glyphicon-pencil admin-action"></span>
+          <% end %>
+          <%= link_to admin_category_url(category), method: :delete,
+            data: {confirm: t("views.admin.category.index.deleteconfirm")} do %>
+            <span class="glyphicon glyphicon-trash admin-action"></span>
+          <% end %>
       </td>
     </tr>
   <% end %>
 </table>
-
-<%= link_to t("views.admin.category.index.newcategorybutton"),
-  new_admin_category_path, class: "btn btn-info" %>

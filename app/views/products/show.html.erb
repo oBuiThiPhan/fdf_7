@@ -18,9 +18,12 @@
       <%= link_to t("products.addtocart"), "/cart/#{@product.id}",
         method: :post, class: "btn btn-primary" %>
     </h3>
+    <br>
+    <br>
     <% if user_signed_in? %>
       <% if can? :create, Comment %>
-        <%= form_for [@product, @comment], remote: true do |f| %>
+        <h4>Create new comment: </h4>
+        <%= form_for [@product, @comment] do |f| %>
           <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.label :rating %>
           <div id="rating-form">

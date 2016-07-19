@@ -34,12 +34,11 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def destroy
-    if @category && @category.destroy
+    if @category.products.blank? && @category.destroy
       flash[:success] = t "controllers.flash.common.destroy_success",
         objects: t("activerecord.model.category")
     else
-      flash[:danger] = t "controllers.flash.common.destroy_error",
-        objects: t("activerecord.model.category")
+      flash[:danger] = t "controllers.admin.category.destroy.fail"
     end
     redirect_to admin_categories_url
   end
