@@ -8,6 +8,9 @@ class Comment < ActiveRecord::Base
   after_save :calculate_score
   after_destroy :calculate_score
 
+  scope :existed, ->(product, user){where("product_id = ? and user_id = ? and
+    rating > ?", product.id, user.id, 0.0)}
+
   private
   def calculate_score
     total = product.comments.reduce(0) {|total, element| total + element.rating}

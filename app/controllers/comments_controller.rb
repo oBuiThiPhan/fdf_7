@@ -2,25 +2,45 @@ class CommentsController < ApplicationController
   include CommentsHelp
   before_action :load_product, only: :create
   load_and_authorize_resource except: :create
- 
+
   def create
     @comment = @product.comments.build comment_params
-    @comment.user = current_user
-    @comment.rating = 0 if @comment.rating.blank?
-    if @comment.save
-      data = json_data @comment
-      data[:count_comments] = @product.comments.count
-      respond_to do |format|
-        format.json {render json: data}
-      end
+    if @comment.rating.blank?
+      @comment.rating = 0.0
     end
+    if @comment.save
+      flash[:success] = t "controllers.flash.common.create_success",
+        objects: t("activerecord.model.comment")
+    else
+      flash[:danger] = t "controllers.flash.common.create_error",
+        objects: t("activerecord.model.comment")
+    end
+    redirect_to product_path(@product)
+  end
+
+  def edit
+  end
+
+  def update
+    if @comment.update_attributes comment_params
+      flash[:success] = t "controllers.flash.common.update_success",
+        objects: t("activerecord.model.comment")
+    else
+      flash[:danger] = t "controllers.flash.common.update_error",
+        objects: t("activerecord.model.comment")
+    end
+    redirect_to product_path(@product)
   end
 
   def destroy
-    @comment.destroy
-    respond_to do |format|
-      format.html {head :ok}
+    if @comment.destroy
+      flash[:success] = t "controllers.flash.common.destroy_success",
+        objects: t("activerecord.model.comment")
+    else
+      flash[:danger] = t "controllers.flash.common.destroy_error",
+        objects: t("activerecord.model.comment")
     end
+    redirect_to product_path(@product)
   end
 
   private

@@ -1,22 +1,23 @@
-<li>
-  <div class="avatar">
-    <%= image_tag comment.user_avatar.url, size: Settings.product.comment.avatar_size %>
-  </div>
-  <div class="comment-body">
-    <div class="user-name">
-      <%= comment.user_name %>
-      <% if can? :destroy, comment %>
-          <span class="dropdown pull-right">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <%= link_to t("delete"), comment_path(comment), class: "delete-comment",
-                  data: {confirm: t("confirm_delete"), id: comment.id} %>
-              </li>
-            </ul>
-          </span>
+<div id="delete-<%=comment.id%>-comment">
+  <div class="comment-card">
+    <%= image_tag comment.user.avatar.url,
+      size: Settings.product.comment.avatar_size %>
+    <%= comment.user.name %>
+    <br>
+    <%= time_ago_in_words(comment.created_at) %>
+    <%= t("views.comments.ago") %>
+    <br>
+    <div>
+      <% if can? :update_destroy, Comment %>
+        <% if user_signed_in? %>
+          <%if comment.user_id == current_user.id %>
+            <%= link_to t("views.comments.edit"),
+              edit_product_comment_path(comment.product, comment), remote: true %>
+            <%= link_to t("views.comments.delete"),
+              product_comment_path(comment.product, comment),
+              method: :delete %>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
     <div class="comment-rating" data-score="<%= comment.rating %>"></div>

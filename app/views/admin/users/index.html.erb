@@ -1,5 +1,5 @@
 <div class="row">
-  <h3 class="col-md-8"><strong><%= t "user.h4" %></strong></h3>
+  <h3 class="col-md-8"><%= t "user.h4" %></h3>
   <br/>
   <div class="panel col-md-3">
     <%= search_form_for [:admin, @search] do |f| %>
@@ -9,7 +9,7 @@
             placeholder: t("searchname") %></td>
           <td rowspan="2">
             <%= f.submit t("products.search"), class: "btn btn-info" %>
-          </td>  
+          </td>
         </tr>
       </table>
     <% end %>

@@ -1,5 +1,6 @@
 <br/>
 <div class="search-padding">
+<center>
   <%= search_form_for @search do |f| %>
     <table class="table-padding">
       <tr>
@@ -13,8 +14,8 @@
           <td><%= f.text_field :name_cont, class: "form-control",
             placeholder: t("products.name") %>
           </td>
-          <td><%= f.number_field :rate_score_eq, step: "0.5", min: "0", max: "5",
-            class: "form-control",placeholder:t("products.rate1") %></td>
+          <td><%= f.number_field :rate_score_cont, step: "0.5", min: "0", max: "5",
+            class: "form-control", placeholder:t("products.rate1") %></td>
           <td>
             <%= f.number_field :price_gteq, class: "form-control",
               step: "0.001", min: "0", placeholder: t("pricefrom") %>
@@ -30,6 +31,7 @@
       </tr>
     </table>
   <% end %>
+</center>
   <hr>
   <table class="table-padding">
     <tr>

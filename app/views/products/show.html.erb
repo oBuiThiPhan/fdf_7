@@ -7,8 +7,7 @@
     <h2>
       <strong><%= @product.name %> - <%= @product.category.title %></strong>
     </h2>
-    <%= social_share_button_tag(@product.name, url: @product) %>
-    <h4><%= @product.description %></h4>
+    <%= social_share_button_tag(@product.name) %>
     <h3>
       <div class="average-comment-rating" data-score="<%= @product.rate_score %>"></div>
     </h3>
@@ -33,7 +32,7 @@
 
   <% if user_signed_in? %>
     <div id="new-comment">
-      <%= image_tag current_user.avatar.url, 
+      <%= image_tag current_user.avatar.url,
         size: Settings.product.comment.avatar_size %>
       <span class="user-name"><%= current_user.name %></span>
       <%= form_for [@product, @comment] do |f| %>
