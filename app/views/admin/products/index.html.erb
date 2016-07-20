@@ -1,9 +1,35 @@
-<h2><%= t "views.admin.product.index.all" %></h2>
-
-<%= link_to t("views.admin.product.index.newproductbutton"),
-  new_admin_product_path, class: "btn btn-info" %>
-<br>
-<br>
+<div class="row">
+  <div class="col-md-7">
+    <center>
+    <h3><%= t "views.admin.product.index.all" %></h3>
+    </center>
+    <%= link_to t("views.admin.product.index.newproductbutton"),
+      new_admin_product_path, class: "btn btn-info" %>
+    <br/>
+    <br/>
+  </div>
+  <div class="panel col-md-5">
+    <br/>
+    <br/>
+    <%= search_form_for [:admin, @search] do |f| %>
+      <table class="table-padding">
+        <tr>
+          <td>
+            <%= f.grouped_collection_select :category_id_eq,
+              Category.parent_category.order(:title),
+              :children, :title, :id, :title,
+              {include_blank: t("SearchCategory")}, class: "form-control" %>
+          </td>
+          <td><%= f.text_field :name_cont, class: "form-control",
+            placeholder: t("searchname") %></td>
+          <td rowspan="2">
+            <%= f.submit t("products.search"), class: "btn btn-info" %>
+          </td>  
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</div>
 <table class="table table-hover">
   <tr class="info">
     <th><%= t "stt" %></th>

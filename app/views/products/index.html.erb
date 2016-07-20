@@ -1,40 +1,43 @@
+<br/>
 <div class="panel search-padding">
-  <%= search_form_for @search do |f|%>
+  <center>
+  <%= search_form_for @search do |f| %>
     <table class="table-padding">
       <tr>
-        <td><h4><%= t "views.admin.product.form.category" %></h4></td>
-        <td><h4><%= t "products.name" %></h4></td>
-        <td><h4><%= t "products.rate" %></h4></td>
-        <td><h4><%= t "products.price" %></h4></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <%= f.grouped_collection_select :category_id_eq,
-            Category.parent_category.order(:title),
-            :children, :title, :id, :title,
-            include_blank: true,class: "form-control" %>
-        </td>
-        <td><%= f.text_field :name_cont %></td>
-        <td><%= f.number_field :rate_score, step: "0.5", min: "0", max: "5" %></td>
-        <td>
-          <%= f.label :price_gteq, t("products.pricebet") %>
-          <%= f.number_field :price_gteq, step: "0.001", min: "0" %>
-          <%= f.label :price_lteq, t("products.and") %>
-          <%= f.number_field :price_lteq, step: "0.001", min: "0" %>
-        </td>
-        <td rowspan="2">
-          <%= f.submit t("products.search"), class: "btn btn-info" %>
-        </td>
+        <form class="form-inline">      
+          <td>
+            <%= f.grouped_collection_select :category_id_eq,
+              Category.parent_category.order(:title),
+              :children, :title, :id, :title,
+              {include_blank: t("SearchCategory")}, class: "form-control" %>
+          </td>
+          <td><%= f.text_field :name_cont, class: "form-control",
+            placeholder: t("products.name") %>
+          </td>
+          <td><%= f.number_field :rate_score, step: "0.5", min: "0", max: "5",
+            class: "form-control",placeholder:t("products.rate1") %></td>
+          <td>
+            <%= f.number_field :price_gteq, class: "form-control",
+              step: "0.001", min: "0", placeholder: t("pricefrom") %>
+          </td>
+          <td>
+            <%= f.number_field :price_lteq, class: "form-control",
+              step: "0.001", min: "0", placeholder: t("priceto")%>
+          </td>
+          <td>
+            <%= f.submit t("products.search"), class: "btn btn-info" %>
+          </td>
+        </form>
       </tr>
     </table>
   <% end %>
+  </center>
   <table class="table-padding">
     <tr>
-      <td><h4>Sort by: </h4></td>
-      <td><h4><%= sort_link @search, :name %></h4></td>
-      <td><h4><%= sort_link @search, :rate_score %></h4></td>
-      <td><h4><%= sort_link @search, :price %></h4></td>
+      <td><h5><%= t("Sortby")%> </h5></td>
+      <td><h5><%= sort_link @search, :name %></h5></td>
+      <td><h5><%= sort_link @search, :rate_score %></h5></td>
+      <td><h5><%= sort_link @search, :price %></h5></td>
     </tr>
   </table>
 </div>
@@ -50,7 +53,8 @@
               <h4><%= product.name.upcase %></h4>
               <h4>
                 <%= t "views.products.index.ratescore" %>
-                <div class="average-comment-rating" data-score="<%= product.rate_score %>"></div>
+                <div class="average-comment-rating" data-score="<%= product.rate_score %>">
+                </div>
               </h4>
               <%= link_to t("products.addtocart"), "/cart/#{product.id}",
                 method: :post, class: "btn btn-primary" %>

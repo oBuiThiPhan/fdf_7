@@ -1,7 +1,7 @@
 <div class="row">
-  <div class="col-md-4 gallery"">
+  <div class="col-md-4 gallery">
     <%= image_tag @product.image.url, size: Settings.product.show.size,
-      class: "thumbnail zoom"%>
+      class: "thumbnail zoom" %>
   </div>
   <div class="col-md-8">
     <h2>
@@ -18,11 +18,11 @@
       <%= link_to t("products.addtocart"), "/cart/#{@product.id}",
         method: :post, class: "btn btn-primary" %>
     </h3>
-    <br>
-    <br>
+    <br/>
+    <br/>
     <% if user_signed_in? %>
       <% if can? :create, Comment %>
-        <h4>Create new comment: </h4>
+        <h4><%= t"Createnewcomment" %> </h4>
         <%= form_for [@product, @comment] do |f| %>
           <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.label :rating %>
@@ -30,7 +30,8 @@
           </div>
           <%= f.label :content %>
           <%= f.text_area :content %>
-          <%= f.submit yield: :button_text, class: "btn btn-primary" %>
+          <br/>
+          <%= f.submit t("create"), class: "btn btn-primary" %>
         <% end %>
       <% end %>
     <% end %>

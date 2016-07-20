@@ -20,7 +20,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  stt: "STT"
+  Sortby: "Sort by: "
+  create: "Create"
+  Createnewcomment: "Create new comment:"
+  stt: "index"
+  pricefrom: "price from"
+  priceto: "price to"
+  SearchCategory: "Search Category"
+  searchname: "Search name"
   title: "Food & Drink"
   chatworks:
     you_requseted_order_in_app: "There are new order from "
@@ -56,6 +63,7 @@ en:
     addtocart: "add to cart"
     name: "Name product"
     rate: "Ratescore"
+    rate1: "Rate"
     pricebet: "From"
     and: "to"
     search: "Search"
@@ -135,7 +143,7 @@ en:
         delete_confirm: "Are you sure?"
     cart:
       index:
-        more: "More"
+        more: "Add More"
         order: "Order this cart"
         noitemcart: "There no product in your cart, would you want to add some?"
         newcart: "Add new to my cart"
@@ -183,7 +191,7 @@ en:
           h1: "Edit category"
           button: "Update"
         index:
-          h1: "Dashboard"
+          h1: "All Categories"
           title: "Title"
           id: "Id"
           parent_id: "Classify"
