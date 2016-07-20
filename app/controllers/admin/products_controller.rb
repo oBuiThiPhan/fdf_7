@@ -2,7 +2,8 @@ class Admin::ProductsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @products = Product.page params[:page]
+    @search= Product.ransack params[:q]
+    @products= @search.result.order("name").page params[:page]
   end
 
   def new

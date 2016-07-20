@@ -2,7 +2,8 @@ class Admin::UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @users = User.order(:name).page params[:page]
+    @search= User.ransack params[:q]
+    @users= @search.result.order("name").page params[:page]
   end
 
   def destroy
