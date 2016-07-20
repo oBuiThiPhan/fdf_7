@@ -20,9 +20,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  Discription: "Discription"
+  update: "Update"
   Sortby: "Sort by: "
   create: "Create"
-  Createnewcomment: "Create new comment:"
+  Createnewcomment: "New comment:"
   stt: "index"
   pricefrom: "price from"
   priceto: "price to"
@@ -75,7 +77,7 @@ en:
     search: "Search"
     classify: "Classify"
     description: "Description"
-    price: "Price($)"
+    price: "Total($)"
     image: "Image"
     quantity: "Quantity"
     yourcart: "Your cart"

@@ -19,6 +19,14 @@ $(document).on('turbolinks:load', function() {
     scoreName: 'comment[rating]'
   });
 
+  $('#edit-rating-form').raty({
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/',
+    scoreName: 'comment[rating]'
+  });
+
   $('rating-form').raty({
     path: '/assets/',
     scoreName: 'comment[rating]',

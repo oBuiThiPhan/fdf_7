@@ -8,6 +8,9 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find_by id: params[:id]
     @comment = @product.comments.build
+    if user_signed_in?
+      @current_comment = Comment.existed(@product, current_user)
+    end
     @comments = @product.comments.order("rating DESC")
       .page params[:page]
     unless @product
