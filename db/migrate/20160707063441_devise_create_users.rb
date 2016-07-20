@@ -8,7 +8,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :phone_number
       t.float :coin, default: 100.0
       t.text :address
-      t.string :chatwork_id
       t.string :provider
       t.string :uid
       t.string :encrypted_password, null: false, default: ""

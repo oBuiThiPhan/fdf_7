@@ -4,10 +4,9 @@ class CreateComments < ActiveRecord::Migration
       t.integer :user_id
       t.integer :product_id
       t.text :content
-      t.float :rating
+      t.float :rating, default: 0.0
 
       t.timestamps null: false
     end
-    add_index :comments, [:user_id, :product_id], unique: true
   end
 end

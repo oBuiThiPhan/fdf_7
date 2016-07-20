@@ -24,12 +24,10 @@ ActiveRecord::Schema.define(version: 20160707063441) do
     t.integer  "user_id"
     t.integer  "product_id"
     t.text     "content"
-    t.float    "rating"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.float    "rating",     default: 0.0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
-
-  add_index "comments", ["user_id", "product_id"], name: "index_comments_on_user_id_and_product_id", unique: true
 
   create_table "line_items", force: :cascade do |t|
     t.integer  "order_id"
@@ -80,7 +78,6 @@ ActiveRecord::Schema.define(version: 20160707063441) do
     t.string   "phone_number"
     t.float    "coin",                   default: 100.0
     t.text     "address"
-    t.string   "chatwork_id"
     t.string   "provider"
     t.string   "uid"
     t.string   "encrypted_password",     default: "",    null: false

@@ -1,8 +1,6 @@
 <div class="row">
   <div class="col-md-7">
-    <center>
     <h3><%= t "views.admin.product.index.all" %></h3>
-    </center>
     <%= link_to t("views.admin.product.index.newproductbutton"),
       new_admin_product_path, class: "btn btn-info" %>
     <br/>
@@ -24,7 +22,7 @@
             placeholder: t("searchname") %></td>
           <td rowspan="2">
             <%= f.submit t("products.search"), class: "btn btn-info" %>
-          </td>  
+          </td>
         </tr>
       </table>
     <% end %>

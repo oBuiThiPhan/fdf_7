@@ -7,8 +7,7 @@
     <h2>
       <strong><%= @product.name %> - <%= @product.category.title %></strong>
     </h2>
-    <%= social_share_button_tag(@product.name, url: @product) %>
-    <h4><%= @product.description %></h4>
+    <%= social_share_button_tag(@product.name, url: root_url) %>
     <h3>
       <div class="average-comment-rating" data-score="<%= @product.rate_score %>"></div>
     </h3>
@@ -22,28 +21,21 @@
         <span class="btn btn-danger"><%= t "products.hethang" %> </span>
       <% end %>
     </h3>
-    <br/>
-    <br/>
+    <% unless @product.description.blank? %>
+      <h4><%= t "Discription" %></h4>
+        <div class="scroll"><%= @product.description %></div>
+    <% end %>
+    <hr>
     <% if user_signed_in? %>
       <% if can? :create, Comment %>
-        <h4><%= t"Createnewcomment" %> </h4>
-        <%= form_for [@product, @comment] do |f| %>
-          <%= f.hidden_field :user_id, value: current_user.id %>
-          <%= f.label :rating %>
-          <div id="rating-form">
-          </div>
-          <%= f.label :content %>
-          <%= f.text_area :content %>
-          <br/>
-          <%= f.submit t("create"), class: "btn btn-primary" %>
-        <% end %>
+        <%= render partial: "comments/new", locals: {exist_comments: @current_comment} %>
       <% end %>
     <% end %>
     <% if can? :read, Comment %>
       <div id="show-comment">
         <%= render @comments %>
-        <%= paginate @comments %>
       </div>
+      <%= paginate @comments %>
     <% end %>
   </div>
 </div>
