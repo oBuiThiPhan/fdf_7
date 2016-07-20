@@ -3,54 +3,57 @@
   <table class="table table-hover">
     <thead>
       <tr class="info">
-        <th><%= t "products.name" %></th>
-        <th><%= t "products.description" %></th>
-        <th><%= t "products.price" %></th>
         <th><%= t "products.image" %></th>
+        <th><%= t "products.name" %></th>
+        <th><%= t "products.price" %></th>
         <th><%= t "products.quantity" %></th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <% @product_with_quantity.each do |product, quantity| %>
-        <% if quantity.present? %>
-          <tr>
-            <td><%= link_to product.name, product_path(product) %></td>
-            <td><%= product.description %></td>
-            <td><%= product.price %></td>
-            <td>
-              <% if product.image.present? %>
-                <%= link_to image_tag(product.image, size: Settings.admin.size),
-                  product_path(product) %>
-              <% else %>
-                <%= link_to image_tag(Settings.admin.url,
-                  size: Settings.admin.size),"#" %>
-              <% end %>
-            </td>
-            <td>
-              <%= form_tag "/cart/#{product.id}", method: :patch do %>
-                <%= number_field_tag :quantity, {}, value: quantity, min: "1",
-                  max: product.quantity, style: "width: 50px;" %>
-                <%= button_tag type: "submit", class: "btn btn-default" do %>
-                  <i class="glyphicon glyphicon-pencil"></i>
+        <% unless product.blank? %>
+          <% if quantity.present? %>
+            <tr>
+              <td>
+                <% if product.image.present? %>
+                  <%= link_to image_tag(product.image, size: Settings.admin.size),
+                    product_path(product) %>
+                <% else %>
+                  <%= link_to image_tag(Settings.admin.url,
+                    size: Settings.admin.size),"#" %>
                 <% end %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to "", "/cart/#{product.id}/delete", method: :delete,
-                data: {confirm: t("views.admin.category.index.deleteconfirm")},
-                class:"glyphicon glyphicon-trash" %>
-            </td>
-          </tr>
+              </td>
+              <td><%= link_to product.name, product_path(product) %></td>
+              <td><%= product.price %></td>
+              <td>
+                <%= form_tag "/cart/#{product.id}", method: :patch do %>
+                  <%= number_field_tag :quantity, {}, value: quantity, min: "1" %>
+                  <%= button_tag type: "submit", class: "btn btn-default" do %>
+                    <i class="glyphicon glyphicon-pencil"></i>
+                  <% end %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to t("views.admin.category.index.deletebutton"),
+                  "/cart/#{product.id}/delete", method: :delete,
+                  data: {confirm: t("views.admin.category.index.deleteconfirm")},
+                  class:"btn btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
         <% end %>
       <% end %>
     </tbody>
   </table>
   <hr>
+  <h3><%= t "orders.show.totalprice" %><%= @total %> $</h3>
   <% if can? :create, Order %>
-    <%= link_to t("views.cart.index.order"),
-      current_user ? new_user_order_path(current_user) : new_user_session_path,
-      class: "btn btn-primary" %>
+    <span class="btn btn-info active">
+      <%= link_to t("views.cart.index.order"),
+        current_user ? new_user_order_path(current_user) : new_user_session_path,
+        class: "a-order" %>
+    </span>
   <% end %>
   <h4>
     <%= link_to t("views.cart.index.more"), products_path %>

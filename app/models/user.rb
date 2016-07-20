@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   def update_role
     self.role = Settings.role.member
   end
-  class << self  
+  class << self
     def find_for_google_oauth2 access_token, signed_in_resource = nil
       data = access_token.info
       user = User.where(provider: access_token.provider, uid: access_token.uid ).first
