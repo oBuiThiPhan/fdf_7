@@ -182,4 +182,21 @@ hr {
 
 .form-tag {
   width: 20%;
+  display: inline-block;
+}
+
+.a-order {
+  color: #fff;
+  &:hover {
+    text-decoration: none;
+    color: red;
+  }
+}
+
+.not-scroll {
+  position:fixed;
+}
+
+.show-product {
+  float: right;
 }

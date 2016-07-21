@@ -11,5 +11,19 @@ User.create(name: "admin",
             password: "123456789")
 Category.create(id: 1, title: "food", parent_id: nil)
 Category.create(id: 2, title: "drink", parent_id: nil)
-Category.create([{title: "soda", parent_id: 2},
-  {title: "sea food", parent_id: 1}])
+Category.create([{id: 3, title: "soda", parent_id: 2},
+  {id: 4, title: "sea food", parent_id: 1}])
+(1..10).each do |stt|
+  Product.create(
+    name: "sea #{stt}",
+    price: (1 + stt),
+    quantity: (10 + stt),
+    category_id: 4)
+end
+(11..20).each do |stt|
+  Product.create(
+    name: "water #{stt}",
+    price: stt,
+    quantity: (stt + 10),
+    category_id: 3)
+end

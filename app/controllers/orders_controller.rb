@@ -20,8 +20,13 @@ class OrdersController < ApplicationController
     @order = @user.orders.build order_params
     if @order.save
       @session_cart.keys.each do |item|
+        quantity = @session_cart[item].to_i
         @line_item = @order.line_items.build
-        @line_item.update product_id: item.to_i, each_quantity: @session_cart[item]
+        @each_product = Product.find_by id: item.to_i
+        @line_item.update product_id: item.to_i,
+          product_name: @each_product.name,
+          each_total_price: (@each_product.price * quantity),
+          each_quantity: quantity
         @line_item.save
       end
       @session_cart.clear
@@ -36,9 +41,11 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order_details = LineItem.order_number(@order)
-      .pluck(:product_id, :each_quantity).map do |product_id, each_quantity|
-      [Product.find_by(id: product_id), each_quantity]
+    if @order
+      @order_details = @order.line_items
+    else
+      flash[:danger] = t "noorder"
+      redirect_to root_url
     end
   end
 
