@@ -1,26 +1,33 @@
-<h4><strong><%= t "orders.index.h4" %></strong></h4>
-<table class="table table-hover">
-  <thead>
-    <tr class="info">
-      <th><%= t "stt" %></th>
-      <th><%= t "orders.index.username" %></th>
-      <th><%= t "orders.index.orderdate" %></th>
-      <th><%= t "orders.index.totalprice" %></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @orders.each_with_index do |order, index| %>
-      <tr>
-        <td> <%= index + 1 %> </td>
-        <td><%= link_to order.user.name, order.user %></td>
-        <td><%= order.created_at.to_time %></td>
-        <td><%= order.total_price %> $</td>
-        <td>
-          <%= link_to t("users.show.show"), admin_order_path(order),
-            class: "btn btn-info" %>
-        </td>
+<% if @orders.any? %>
+  <h4><strong><%= t "orders.index.h4" %></strong></h4>
+  <table class="table table-hover">
+    <thead>
+      <tr class="info">
+        <th><%= t "stt" %></th>
+        <th><%= t "orders.index.username" %></th>
+        <th><%= t "orders.index.orderdate" %></th>
+        <th><%= t "orders.index.totalprice" %></th>
+        <th></th>
       </tr>
-    <% end %>
-    <%= paginate @orders %>
-  </tbody>
+    </thead>
+    <tbody>
+      <% @orders.each_with_index do |order, index| %>
+        <tr>
+          <td>
+            <%= Settings.per_page * (@orders.current_page - 1) + index + 1 %>
+          </td>
+          <td><%= link_to order.user.name, order.user %></td>
+          <td><%= order.created_at.to_time %></td>
+          <td><%= order.total_price %> $</td>
+          <td>
+            <%= link_to t("users.show.show"), admin_order_path(order),
+              class: "btn btn-info" %>
+          </td>
+        </tr>
+      <% end %>
+      <%= paginate @orders %>
+    </tbody>
+  </table>
+<% else %>
+  <center><h4><%= t "noorderfraomuser" %></h4></center>
+<% end %>

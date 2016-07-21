@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 20160707063441) do
   create_table "categories", force: :cascade do |t|
     t.string   "title"
     t.integer  "level"
-    t.integer  "left"
-    t.integer  "right"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "left_index"
+    t.integer  "right_index"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "comments", force: :cascade do |t|

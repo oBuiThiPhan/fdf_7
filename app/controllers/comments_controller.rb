@@ -1,7 +1,10 @@
 class CommentsController < ApplicationController
-  include CommentsHelp
-  before_action :load_product, only: :create
-  load_and_authorize_resource except: :create
+  before_action :load_product, except: [:index, :show]
+  before_action :load_exist_comment, except: [:index, :show]
+  load_and_authorize_resource
+
+  def new
+  end
 
   def create
     @comment = @product.comments.build comment_params
@@ -9,8 +12,7 @@ class CommentsController < ApplicationController
       @comment.rating = 0.0
     end
     if @comment.save
-      flash[:success] = t "controllers.flash.common.create_success",
-        objects: t("activerecord.model.comment")
+      SendCommentEmailWorker.perform_async @comment.id
     else
       flash[:danger] = t "controllers.flash.common.create_error",
         objects: t("activerecord.model.comment")
@@ -22,10 +24,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.update_attributes comment_params
-      flash[:success] = t "controllers.flash.common.update_success",
-        objects: t("activerecord.model.comment")
-    else
+    unless @comment.update_attributes comment_params
       flash[:danger] = t "controllers.flash.common.update_error",
         objects: t("activerecord.model.comment")
     end
@@ -33,10 +32,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if @comment.destroy
-      flash[:success] = t "controllers.flash.common.destroy_success",
-        objects: t("activerecord.model.comment")
-    else
+    unless @comment.destroy
       flash[:danger] = t "controllers.flash.common.destroy_error",
         objects: t("activerecord.model.comment")
     end
@@ -45,7 +41,7 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit :content, :rating
+    params.require(:comment).permit :user_id, :content, :rating
   end
 
   def load_product
@@ -54,5 +50,10 @@ class CommentsController < ApplicationController
       flash[:danger] = t "products.show.noproduct"
       redirect_to products_path
     end
+  end
+
+  def load_exist_comment
+    @all_exist_comments = @product.comments.where user_id: current_user.id
+    @exist_comments = @all_exist_comments.where.not rating: nil
   end
 end

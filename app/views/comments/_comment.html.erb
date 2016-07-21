@@ -20,10 +20,8 @@
         <% end %>
       <% end %>
     </div>
-    <div class="comment-rating" data-score="<%= comment.rating %>"></div>
-    <div class="content"><%= comment.content %></div>
-    <div class="timestamp">
-      <%= time_ago_in_words comment.created_at %>
+    <div id="edit-<%=comment.id%>-comment">
+      <%= render partial: "comments/show_comment", locals: {comment: comment} %>
     </div>
   </div>
-</li>
+</div>

@@ -9,9 +9,14 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find_by id: params[:id]
-    @comment = Comment.new
-    @comments = @product.comments.order created_at: :desc
-    unless @product
+    if @product
+      @comment = @product.comments.build
+      if user_signed_in?
+        @current_comment = Comment.existed(@product, current_user)
+      end
+      @comments = @product.comments.order("rating DESC")
+        .page params[:page]
+    else
       flash[:danger] = t "products.show.noproduct"
       redirect_to products_path
     end

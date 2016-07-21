@@ -7,7 +7,7 @@ class SendChatworkWorker
     if @order
       ChatWork::Message.create(room_id: Settings.chatroom,
         body: " #{@order.user.email}
-        #{I18n.t("chatworks.you_requseted_order_in_app")} + #{@order.user.name}")
+        #{I18n.t("chatworks.you_requseted_order_in_app")} #{@order.user.name}")
     end
   end
 end

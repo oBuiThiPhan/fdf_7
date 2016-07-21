@@ -1,8 +1,8 @@
-class Admin::SuggestsController < ApplicationController
+class Admin::SuggestsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @suggests = Suggest.where(created_at: Time.zone.now.all_month)
+    @suggests = Suggest.where(created_at: Time.zone.now.all_month).order("status")
       .page params[:page]
   end
 

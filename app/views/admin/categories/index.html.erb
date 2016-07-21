@@ -16,18 +16,18 @@
   <%= paginate @categories%>
   <% @category_parent.each_with_index do |category, index| %>
     <tr class="warning">
-      <td> <%= index + 1 %> </td>
+      <td> <%= Settings.per_page * (@categories.current_page - 1) + index + 1 %></td>
       <td> <%= category.title %> </td>
-      <td><%= category.left %></td>
-      <td><%= category.right %></td>
+      <td><%= category.left_index %></td>
+      <td><%= category.right_index %></td>
       <td><%= category.level %></td>
       <td>
           <%= link_to edit_admin_category_url(category) do %>
-            <span class="glyphicon glyphicon-pencil admin-action"></span>
+            <span class="glyphicon glyphicon-pencil admin-action" title="edit"></span>
           <% end %>
           <%= link_to admin_category_url(category), method: :delete,
             data: {confirm: t("views.admin.category.index.deleteconfirm")} do %>
-            <span class="glyphicon glyphicon-trash admin-action"></span>
+            <span class="glyphicon glyphicon-trash admin-action" title="delete"></span>
           <% end %>
       </td>
     </tr>
@@ -36,8 +36,8 @@
         <tr>
           <td></td>
           <td>- <%= category.title %></td>
-          <td><%= category.left %></td>
-          <td><%= category.right %></td>
+          <td><%= category.left_index %></td>
+          <td><%= category.right_index %></td>
           <td><%= category.level %></td>
           <td>
               <%= link_to edit_admin_category_url(category) do %>

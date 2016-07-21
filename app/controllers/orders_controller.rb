@@ -8,7 +8,10 @@ class OrdersController < ApplicationController
     @product_with_quantity = @session_cart.map {|id, quantity|
       [Product.find_by(id: id), quantity]}
     each_price = []
-    if @product_with_quantity
+    if @product_with_quantity.nil?
+      flash[:danger] = "No product for order, please choose some products"
+      redirect_to products_path
+    else
       @product_with_quantity.each do |product, quantity|
         each_price << (product.price * quantity.to_i)
       end
@@ -18,25 +21,30 @@ class OrdersController < ApplicationController
 
   def create
     @order = @user.orders.build order_params
-    if @order.save
-      @session_cart.keys.each do |item|
-        quantity = @session_cart[item].to_i
-        @line_item = @order.line_items.build
-        @each_product = Product.find_by id: item.to_i
-        @line_item.update product_id: item.to_i,
-          product_name: @each_product.name,
-          each_total_price: (@each_product.price * quantity),
-          each_quantity: quantity
-        @line_item.save
-      end
-      @session_cart.clear
-      flash[:success] = t "orders.create.saved"
-      redirect_to user_order_path(@user, @order)
-      SendEmailWorker.perform_async @order.id
-      SendChatworkWorker.perform_async @order.id
+    if current_user.address.blank? && @order.shipping_address.blank?
+      flash[:danger] = "Please fill address for shipping"
+      redirect_to new_user_order_path(current_user, @order)
     else
-      flash[:danger] = t "orders.create.nosave"
-      redirect_to root_url
+      if @order.save
+        @session_cart.keys.each do |item|
+          quantity = @session_cart[item].to_i
+          @line_item = @order.line_items.build
+          @each_product = Product.find_by id: item.to_i
+          @line_item.update product_id: item.to_i,
+            product_name: @each_product.name,
+            each_total_price: (@each_product.price * quantity),
+            each_quantity: quantity
+          @line_item.save
+        end
+        @session_cart.clear
+        flash[:success] = t "orders.create.saved"
+        redirect_to user_order_path(@user, @order)
+        SendEmailWorker.perform_async @order.id
+        SendChatworkWorker.perform_async @order.id
+      else
+        flash[:danger] = t "orders.create.nosave"
+        redirect_to root_url
+      end
     end
   end
 

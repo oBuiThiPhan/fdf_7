@@ -1,9 +1,9 @@
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < Admin::BaseController
   load_and_authorize_resource
 
   def index
     @search= User.ransack params[:q]
-    @users= @search.result.order("name").page params[:page]
+    @users= @search.result.order("role desc").page params[:page]
   end
 
   def destroy
@@ -13,5 +13,5 @@ class Admin::UsersController < ApplicationController
       flash[:danger] = t "user.failed"
     end
     redirect_to admin_users_url
-  end  
+  end
 end

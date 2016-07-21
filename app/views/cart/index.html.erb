@@ -26,15 +26,15 @@
                   <%= number_field_tag :quantity, {}, value: quantity, min: "1",
                     class: "form-tag form-control" %>
                   <%= button_tag type: "submit", class: "btn btn-default" do %>
-                    <i class="glyphicon glyphicon-pencil"></i>
+                    <i class="glyphicon glyphicon-pencil" title="edit"></i>
                   <% end %>
                 <% end %>
               </td>
               <td>
-                <%= link_to t("views.admin.category.index.deletebutton"),
-                  "/cart/#{product.id}/delete", method: :delete,
-                  data: {confirm: t("views.admin.category.index.deleteconfirm")},
-                  class:"btn btn-danger" %>
+                <%= link_to "/cart/#{product.id}/delete", method: :delete,
+                  data: {confirm: t("views.admin.category.index.deleteconfirm")} do %>
+                  <span class="glyphicon glyphicon-trash cart-action"  title="delete" ></span>
+                <% end %>
               </td>
             </tr>
           <% end %>

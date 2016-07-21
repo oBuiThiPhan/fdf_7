@@ -10,7 +10,6 @@ class OrderMailer < ApplicationMailer
     if @order
       @order_details = @order.line_items
       @admin = User.find_by role: Settings.role.admin
-
       mail from: @order.user.email, to: @admin.email, subject: t("mail.ordertitle")
     end
   end

@@ -1,4 +1,4 @@
-$(document).on('ready', function() {
+$(document).on('turbolinks:load', function() {
   $('.comment-rating').raty({
     readOnly:true,
     score: function() {

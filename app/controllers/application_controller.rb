@@ -4,12 +4,33 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protect_from_forgery with: :exception
+
+  after_filter :store_location
+
   include CanCan::ControllerAdditions
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to :back, alert: exception.message
+    flash[:danger] = exception.message
+    if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
+      redirect_to :back
+    else
+      redirect_to root_url
+    end
   end
 
   private
+  def store_location
+    session[:return_to] = request.fullpath
+  end
+
+  def clear_stored_location
+    session[:return_to] = nil
+  end
+
+  def redirect_back_or_to alternate
+    redirect_to(session[:return_to] || alternate)
+    clear_stored_location
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit :sign_up do |u|
       u.permit :name, :email, :password, :password_confirmation,

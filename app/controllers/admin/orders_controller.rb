@@ -1,4 +1,4 @@
-class Admin::OrdersController < ApplicationController
+class Admin::OrdersController < Admin::BaseController
   load_and_authorize_resource
 
   def index
@@ -7,9 +7,11 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find_by id: params[:id]
-    @order_details = LineItem.order_number(@order)
-      .pluck(:product_id, :each_quantity).map do |product_id, each_quantity|
-      [Product.find_by(id: product_id), each_quantity]
+    if @order
+      @order_details = @order.line_items
+    else
+      flash[:danger] = t "noorder"
+      redirect_to admin_root_url
     end
   end
 end

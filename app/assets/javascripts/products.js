@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('#new_comment').submit(function(e){
+  $('form.create-new-comment').on('submit',function(e){
     e.preventDefault();
     var url = $(this).attr('action');
     var method = $(this).attr('method');

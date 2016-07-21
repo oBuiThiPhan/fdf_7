@@ -1,43 +1,47 @@
-<h4><strong><%= t "views.suggests.index.dashboard" %></strong></h4>
+<% if @suggests.any? %>
+  <h4><strong><%= t "views.suggests.index.dashboard" %></strong></h4>
 
-<table class="table table-hover">
-  <tr class="info">
-    <th><%= t "stt" %></th>
-    <th><%= t "views.suggests.index.picture" %></th>
-    <th><%= t "views.suggests.index.content" %></th>
-    <th><%= t "views.suggests.index.category" %></th>
-    <th><%= t "views.suggests.index.usename" %></th>
-    <th><%= t "views.suggests.index.status" %></th>
-  </tr>
-  <%= paginate @suggests%>
-  <% @suggests.each_with_index do |suggest, index| %>
-    <tr>
-      <td> <%= index + 1 %> </td>
-      <td>
-        <%= image_tag suggest.picture.url, size: Settings.suggest.index.size,
-          class: "thumbnail zoom" if suggest.picture? %>
-      </td>
-      <td> <%= suggest.content %> </td>
-      <td> <%= suggest.category.title %> </td>
-      <td> <%= suggest.user.name %> </td>
-      <td>
-        <div id="<%=suggest.id%>-accept">
-          <% unless suggest.status %>
-            <%= form_tag admin_suggest_path(suggest), method: :put,
-              class: "form-suggest", data_id: suggest.id,
-              id: "form-suggest-#{suggest.id}" do %>
-                <%= hidden_field_tag :status, id: "status" %>
-                <%= submit_tag t("views.admin.suggests.index.deletebutton"),
-                  class:"btn btn-info" %>
-            <% end %>
-          <% else %>
-            <span class="glyphicon glyphicon-ok ok"></span>
-            </span>
-          <% end %>
-        </div>
-      </td>
+  <table class="table table-hover">
+    <tr class="info">
+      <th><%= t "stt" %></th>
+      <th><%= t "views.suggests.index.picture" %></th>
+      <th><%= t "views.suggests.index.content" %></th>
+      <th><%= t "views.suggests.index.category" %></th>
+      <th><%= t "views.suggests.index.usename" %></th>
+      <th><%= t "views.suggests.index.status" %></th>
     </tr>
-  <% end %>
-</table>
-<div>
-<%= paginate @suggests %>
+    <%= paginate @suggests%>
+    <% @suggests.each_with_index do |suggest, index| %>
+      <tr>
+        <td><%= Settings.per_page * (@suggests.current_page - 1) + index + 1 %> </td>
+        <td>
+          <%= image_tag suggest.picture.url, size: Settings.suggest.index.size,
+            class: "thumbnail zoom" if suggest.picture? %>
+        </td>
+        <td> <%= suggest.content %> </td>
+        <td> <%= suggest.category.title %> </td>
+        <td> <%= suggest.user.name %> </td>
+        <td>
+          <div id="<%=suggest.id%>-accept">
+            <% unless suggest.status %>
+              <%= form_tag admin_suggest_path(suggest), method: :put,
+                class: "form-suggest", data_id: suggest.id,
+                id: "form-suggest-#{suggest.id}" do %>
+                  <%= hidden_field_tag :status, id: "status" %>
+                  <%= submit_tag t("views.admin.suggests.index.deletebutton"),
+                    class:"btn btn-info" %>
+              <% end %>
+            <% else %>
+              <span class="glyphicon glyphicon-ok ok"></span>
+              </span>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <div>
+  <%= paginate @suggests %>
+<% else %>
+  <center><h4><%= t "havenosuggest" %></h4></center>
+<% end %>

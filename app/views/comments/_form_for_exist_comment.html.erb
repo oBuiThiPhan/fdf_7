@@ -1,4 +1,4 @@
-<%= form_for [@product, @comment], remote: true do |f| %>
+<%= form_for [@product, @comment] do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :rating, value: 0.0 %>
 

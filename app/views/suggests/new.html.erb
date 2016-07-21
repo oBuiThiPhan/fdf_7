@@ -7,11 +7,10 @@
 
       <%= f.label :classify %>
       <%= f.select :category_id,
-        options_for_select(@categories.collect {|c| [c.title, c.id]}), {},
-        {class: "form-control"} %>
+        options_for_select(@categories.collect {|c| [c.title, c.id]}.insert(2, "other")), {}, {class: "form-control"} %>
       <br>
 
-      <%= f.label :content %>:
+      <%= f.label :content %>
       <%= f.text_area :content, class: "form-control" %>
       <br>
 

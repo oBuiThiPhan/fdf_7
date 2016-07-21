@@ -14,7 +14,7 @@
           <td><%= f.text_field :name_cont, class: "form-control",
             placeholder: t("products.name") %>
           </td>
-          <td><%= f.number_field :rate_score_cont, step: "0.5", min: "0", max: "5",
+          <td><%= f.number_field :rate_score_eq, step: "0.5", min: "0", max: "5",
             class: "form-control", placeholder:t("products.rate1") %></td>
           <td>
             <%= f.number_field :price_gteq, class: "form-control",
@@ -53,7 +53,6 @@
               <h3><%= product.price %> $</h3>
               <h4><%= product.name.upcase %></h4>
               <h4>
-                <%= t "views.products.index.ratescore" %>
                 <div class="average-comment-rating" data-score="<%= product.rate_score %>">
                 </div>
               </h4>
@@ -73,3 +72,6 @@
   <%end%>
 </div>
 <%= paginate @products %>
+<br>
+<br>
+<br>

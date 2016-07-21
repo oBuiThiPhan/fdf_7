@@ -20,10 +20,20 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  verify_admin: "You arer not allow to access into this"
+  unauthorized:
+    create:
+      order: "Please log in to order"
+    edit:
+      profile: "You cannot edit other user's profile"
   delete: "Delete"
   confirm_delete: "Delete this comment?"
   comment_invite: "Write your comment about this product..."
   comment_button: "Comment"
+  havenosuggest: "There are no suggests from users"
+  noorderfraomuser: "There are no order from users"
+  nosearchforproduct: "No product for your search"
+  nosearchforuser: "No user for your search"
   Discription: "Discription"
   update: "Update"
   Sortby: "Sort by: "
@@ -38,7 +48,7 @@ en:
   login:
     signup: "Please sign up to create new account"
   noorder: "This orders no exist"
-  title: "Food & Drink"
+  title: "Foods & Drinks"
   chatworks:
     you_requseted_order_in_app: "There are new order from "
   cart:
@@ -53,6 +63,7 @@ en:
       show: "Show detail"
       historyorder: "History Order"
   mail:
+    comment: "also comment in"
     ordertitle: "New order from user"
   orders:
     show:
@@ -220,12 +231,12 @@ en:
   user:
     h4: "All users"
     edit: "Profile updated"
-    name: "Name: "
-    email: "Email: "
-    phone: "Phone_number: "
-    address: "Address: "
+    name: "Name"
+    email: "Email"
+    phone: "Phone_number"
+    address: "Address"
     avatar: "Avatar"
-    coin: "Coins: "
+    coin: "Coins"
     owe: "Your coin is now negative!"
     notice: "Are you sure?"
     Update: "Update"

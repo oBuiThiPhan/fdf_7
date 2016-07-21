@@ -36,6 +36,16 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   version :thumb do
     process resize_to_fill: [200, 150]
+    def default_url
+      "/assets/thumb_fd.jpg"
+    end
+  end
+
+  version :zoom do
+    process resize_to_fill: [350,400]
+    def default_url
+      "/assets/zoom_fd.jpg"
+    end
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

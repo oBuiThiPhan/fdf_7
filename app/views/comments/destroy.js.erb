@@ -1,2 +1,9 @@
 $('#delete-<%=@comment.id%>-comment').html('');
-$('#rate-score').html('<%= @product.rate_score %>');
+$('#rate-score').find('.average-comment-rating').raty({
+    readOnly:true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  });
+$('#rate-score').html('<div class="average-comment-rating" data-score="<%= @product.rate_score %>"></div>');

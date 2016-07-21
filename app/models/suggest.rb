@@ -7,4 +7,6 @@ class Suggest < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
 
   validates :content, presence: true
+
+  scope :not_accept, ->{where(status: false)}
 end

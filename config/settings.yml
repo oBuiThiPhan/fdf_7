@@ -1,6 +1,6 @@
 size: "200x250"
 url: "/assets/a4.jpg"
-per_page: "5"
+per_page: 16
 admin:
   size: "70x70"
   url: "assets/avata.jpg"
@@ -9,7 +9,7 @@ role:
   admin: 2
 product:
   index:
-    size: "200x150"
+    size: "250x240"
   show:
     size: "350x400"
   comment:
@@ -23,4 +23,4 @@ avatar:
 image:
   urlfood: "food.jpg"
   urldrink: "drink.jpg"
-chatroom: "49836421"
+chatroom: "50311442"

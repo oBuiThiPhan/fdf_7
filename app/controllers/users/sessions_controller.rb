@@ -8,7 +8,7 @@ class Users::SessionsController < Devise::SessionsController
       if current_user.admin?
         redirect_to admin_root_path
       elsif current_user.member?
-        redirect_to root_path
+        redirect_back_or_to root_path
       end
     else
       flash[:danger] = t "login.signup"

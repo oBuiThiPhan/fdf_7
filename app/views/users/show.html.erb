@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="col-md-4">
+<div class="row container-pading">
+  <div class="col-md-3">
     <%= image_tag @user.avatar.url, size: Settings.size  %>
     <h3><%= t "user.name" %><%= @user.name %></h3>
     <p> <%= t "user.email" %> <%= @user.email %> </p>
@@ -12,7 +12,7 @@
     <h4><%= link_to t("layout.header.editprofile"), edit_user_path %></h4>
   </div>
 
-  <div class="col-md-8">
+  <div class="col-md-9">
     <h2><%= t "users.show.historyorder" %></h2>
     <br>
     <ul class="nav nav-pills nav-justified">

@@ -15,7 +15,7 @@
     </tr>
     <% @suggests.each_with_index do |suggest, index| %>
       <tr>
-        <td> <%= index + 1 %> </td>
+        <td> <%= Settings.per_page * (@suggests.current_page - 1) + index + 1 %> </td>
         <td>
           <%= image_tag suggest.picture.url,
             size: Settings.suggest.index.size if suggest.picture? %>
@@ -39,6 +39,6 @@
   </table>
   <%= paginate @suggests %>
 <% else %>
-  <h3>You have no suggest, if you want to <%= link_to "create new suggest?",
-    new_suggest_path %></h3>
+  <center><h3>You have no suggest, if you want to <%= link_to "create new suggest?",
+    new_suggest_path %></h3></center>
 <% end %>
