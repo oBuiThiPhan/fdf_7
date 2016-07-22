@@ -183,3 +183,79 @@ hr {
 .form-tag {
   width: 20%;
 }
+/* new comment */
+#new-comment{
+  margin-top: 50px;
+  background-color: #f2f2f2;
+  padding: 30px;
+  .user-name{
+    margin-left: 10px;
+    font-weight: bold;
+    vertical-align: top;
+  }
+  #new_comment{
+    .content{
+      textarea{
+        width: 100%;
+        height: 100px;
+        resize: vertical;
+        margin-top: 15px;
+        padding: 10px;
+      }
+    }
+    input{
+      border-radius: 0;
+    }
+  }
+}
+
+#login-invite{
+  margin-top: 50px;
+}
+
+.comment-stats{
+  margin: 30px 0 10px 0;
+  strong{
+    font-size: 1.25em;
+  }
+}
+
+/* Comments */
+#comments{
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .avatar{
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+    display: inline-block;
+  }
+  .comment-body{
+    display: inline-block;
+    width: 90%;
+    .user-name{
+      font-weight: bold;
+    }
+    .content {
+      word-wrap: break-word;
+    }
+    .timestamp {
+      color: #999999;
+    }
+    textarea{
+       resize: vertical;
+       width: 96%;
+       height: 80px;
+       margin: 5px 0;
+     }
+     button{
+       border-radius: 0px;
+       margin-right: 5px;
+     }
+  }
+}
+

@@ -20,6 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  delete: "Delete"
+  confirm_delete: "Delete this comment?"
+  comment_invite: "Write your comment about this product..."
+  comment_button: "Comment"
   Sortby: "Sort by: "
   create: "Create"
   Createnewcomment: "Create new comment:"
