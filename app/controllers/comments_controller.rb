@@ -1,60 +1,31 @@
 class CommentsController < ApplicationController
-  before_action :load_product, except: [:index, :show]
-  before_action :load_exist_comment, except: [:index, :show]
-  load_and_authorize_resource
-
-  def new
-  end
-
+  include CommentsHelp
+  before_action :load_product, only: :create
+  load_and_authorize_resource except: :create
+ 
   def create
     @comment = @product.comments.build comment_params
-    respond_to do |format|
-      if @comment.save
-        flash[:success] = t "controllers.flash.common.create_success",
-          objects: t("activerecord.model.comment")
-      else
-        flash[:danger] = t "controllers.flash.common.create_error",
-          objects: t("activerecord.model.comment")
+    @comment.user = current_user
+    @comment.rating = 0 if @comment.rating.blank?
+    if @comment.save
+      data = json_data @comment
+      data[:count_comments] = @product.comments.count
+      respond_to do |format|
+        format.json {render json: data}
       end
-      format.html {redirect_to @product_path}
-      format.js
-    end
-  end
-
-  def edit
-  end
-
-  def update
-    respond_to do |format|
-      if @comment.update_attributes comment_params
-        flash[:success] = t "controllers.flash.common.update_success",
-          objects: t("activerecord.model.comment")
-      else
-        flash[:danger] = t "controllers.flash.common.update_error",
-          objects: t("activerecord.model.comment")
-      end
-      format.html {redirect_to @product_path}
-      format.js
     end
   end
 
   def destroy
+    @comment.destroy
     respond_to do |format|
-      if @comment.destroy
-        flash[:success] = t "controllers.flash.common.destroy_success",
-          objects: t("activerecord.model.comment")
-      else
-        flash[:danger] = t "controllers.flash.common.destroy_error",
-          objects: t("activerecord.model.comment")
-      end
-      format.html {redirect_to @product_path}
-      format.js
+      format.html {head :ok}
     end
   end
 
   private
   def comment_params
-    params.require(:comment).permit :user_id, :content, :rating
+    params.require(:comment).permit :content, :rating
   end
 
   def load_product
@@ -63,10 +34,5 @@ class CommentsController < ApplicationController
       flash[:danger] = t "products.show.noproduct"
       redirect_to products_path
     end
-  end
-
-  def load_exist_comment
-    @all_exist_comments = @product.comments.where user_id: current_user.id
-    @exist_comments = @all_exist_comments.where.not rating: nil
   end
 end

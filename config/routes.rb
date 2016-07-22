@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show] do
     resources :comments, except: [:index, :show]
   end
+  resources :comments
   resources :cart
 
   namespace :admin do

@@ -24,26 +24,38 @@
     </h3>
     <br/>
     <br/>
-    <% if user_signed_in? %>
-      <% if can? :create, Comment %>
-        <h4><%= t"Createnewcomment" %> </h4>
-        <%= form_for [@product, @comment] do |f| %>
-          <%= f.hidden_field :user_id, value: current_user.id %>
-          <%= f.label :rating %>
-          <div id="rating-form">
-          </div>
-          <%= f.label :content %>
-          <%= f.text_area :content %>
-          <br/>
-          <%= f.submit t("create"), class: "btn btn-primary" %>
-        <% end %>
+    <section id="comments-section">
+      <div class="comment-stats">
+    <span class="glyphicon glyphicon-comment"></span>
+    <strong><%= t"comments" %></strong>
+    <strong id="count-comments">(<%= @comments.count %>)</strong>
+  </div>
+
+  <% if user_signed_in? %>
+    <div id="new-comment">
+      <%= image_tag current_user.avatar.url, 
+        size: Settings.product.comment.avatar_size %>
+      <span class="user-name"><%= current_user.name %></span>
+      <%= form_for [@product, @comment] do |f| %>
+        <%= f.label :rating %>
+        <div id="rating-form">
+        </div>
+        <div class="form-group content">
+          <%= f.text_area :content, placeholder: t("comment_invite") %>
+        </div>
+        <%= f.submit t("comment_button"), class: "btn btn-primary",
+          id: "create-new-comment" %>
       <% end %>
-    <% end %>
-    <% if can? :read, Comment %>
-      <div id="show-comment">
-        <%= render @comments %>
-        <%= paginate @comments %>
-      </div>
-    <% end %>
+    </div>
+  <% else %>
+    <div id="login-invite">
+      <%= link_to t(".login_to_comment"), new_user_session_path %>
+    </div>
+  <% end %>
+
+  <ol id="comments">
+    <%= render @comments %>
+  </ol>
+</section>
   </div>
 </div>
