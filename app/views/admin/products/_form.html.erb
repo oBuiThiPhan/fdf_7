@@ -2,10 +2,10 @@
   <%= render partial: "shared/error_messages", locals: {object: @product} %>
 
   <%= f.label :category %>
-  <%= f.grouped_collection_select :category_id,
-    Category.parent_category.order(:title), :children, :title, :id, :title,
-    {}, {class: "form-control"} %>
+  <%= f.select :category_id,
+    grouped_options_for_select(Category.for_select), {}, {class: "form-control"} %>
 
+ <br>
   <%= f.label :name %>
   <%= f.text_field :name, class: "form-control" %>
 

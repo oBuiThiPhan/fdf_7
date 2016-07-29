@@ -15,16 +15,15 @@
       <table class="table-padding">
         <tr>
           <td>
-            <%= f.grouped_collection_select :category_id_eq,
-              Category.parent_category.order(:title),
-              :children, :title, :id, :title,
-              {include_blank: t("SearchCategory")}, class: "form-control" %>
+            <%= f.select :by_category_id,
+              options_for_select(Category.nested_option),
+              {include_blank: t("SearchCategory")}, {class: "form-control"} %>
           </td>
           <td><%= f.text_field :name_cont, class: "form-control",
             placeholder: t("searchname") %></td>
           <td rowspan="2">
             <%= f.submit t("products.search"), class: "btn btn-info" %>
-          </td>  
+          </td>
         </tr>
       </table>
     <% end %>

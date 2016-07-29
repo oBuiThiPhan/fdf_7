@@ -4,19 +4,22 @@
     <tr>
       <td><strong><%= t("views.admin.category.form.classify") %>: </strong></td>
       <td>
-        <%= f.select :parent_id,
-          options_for_select(Category.parent_category
-          .collect {|c| [c.title, c.id]}), {}, {class: "form-control"} %>
+        <%= collection_select(:parent_id, params[:parent_id],
+          Category.level_parent, :id, :title,
+          {}, {class: "form-control"})%>
       </td>
     </tr>
-  <br>
-  <tr>
-    <td><strong><%= f.label :title %>:</strong></td>
-    <td><%= f.text_field :title, class: "form-control" %></td>
-  </tr>
-  <br>
-  <br>
-  <tr>
-    <td colspan="2"><%= f.submit yield: :button_text, class: "btn btn-primary" %></td>
-  </tr>
+    <br>
+    <tr>
+    </tr>
+    <tr>
+      <td><strong><%= f.label :title %>:</strong></td>
+      <td><%= f.text_field :title, class: "form-control" %></td>
+    </tr>
+    <br>
+    <br>
+    <tr>
+      <td colspan="2"><%= f.submit yield: :button_text, class: "btn btn-primary" %></td>
+    </tr>
+   </table>
 <% end %>

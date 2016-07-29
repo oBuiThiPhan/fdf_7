@@ -10,17 +10,19 @@
   <tr class="info">
     <th><%= t "stt" %></th>
     <th><%= t "views.admin.category.index.title" %></th>
-    <th><%= t "views.admin.category.index.parent_id" %></th>
+    <th><%= t "views.admin.category.index.left" %></th>
+    <th><%= t "views.admin.category.index.right" %></th>
+    <th><%= t "views.admin.category.index.level" %></th>
     <th><%= t "views.admin.category.index.function" %></th>
   </tr>
   <%= paginate @categories%>
-  <% @categories.each_with_index do |category, index| %>
-    <tr>
+  <% @category_parent.each_with_index do |category, index| %>
+    <tr class="warning">
       <td> <%= index + 1 %> </td>
       <td> <%= category.title %> </td>
-      <% if category.parent.present? %>
-        <td><%= category.parent.title %></td>
-      <% end %>
+      <td><%= category.left %></td>
+      <td><%= category.right %></td>
+      <td><%= category.level %></td>
       <td>
           <%= link_to edit_admin_category_url(category) do %>
             <span class="glyphicon glyphicon-pencil admin-action"></span>
@@ -31,5 +33,25 @@
           <% end %>
       </td>
     </tr>
+    <% if Category.have_child(category).any? %>
+      <% Category.have_child(category).each do |category| %>
+        <tr>
+          <td></td>
+          <td>- <%= category.title %></td>
+          <td><%= category.left %></td>
+          <td><%= category.right %></td>
+          <td><%= category.level %></td>
+          <td>
+              <%= link_to edit_admin_category_url(category) do %>
+                <span class="glyphicon glyphicon-pencil admin-action"></span>
+              <% end %>
+              <%= link_to admin_category_url(category), method: :delete,
+                data: {confirm: t("views.admin.category.index.deleteconfirm")} do %>
+                <span class="glyphicon glyphicon-trash admin-action"></span>
+              <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
   <% end %>
 </table>

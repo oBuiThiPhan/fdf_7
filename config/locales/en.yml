@@ -201,6 +201,9 @@ en:
           h1: "Edit category"
           button: "Update"
         index:
+          left: "Left"
+          right: "Right"
+          level: "Level"
           h1: "All Categories"
           title: "Title"
           id: "Id"
