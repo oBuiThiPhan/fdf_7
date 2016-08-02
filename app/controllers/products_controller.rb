@@ -1,14 +1,19 @@
 class ProductsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource find_by: :slug
 
   def index
-    @search= Product.ransack params[:q]
-    @products= @search.result.order(quantity: :desc).page params[:page]
-    @search.build_sort
+    if params[:category]
+      @category = Category.find params[:category]
+      @search= Product.select_at_header(@category.id).ransack params[:q]
+      @products = @search.result.order(quantity: :desc).page params[:page]
+    else
+      @search= Product.ransack params[:q]
+      @products= @search.result.order(quantity: :desc).page params[:page]
+    end
+      @search.build_sort
   end
 
   def show
-    @product = Product.find_by id: params[:id]
     if @product
       @comment = @product.comments.build
       if user_signed_in?

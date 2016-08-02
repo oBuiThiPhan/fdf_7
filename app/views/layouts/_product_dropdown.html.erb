@@ -1,0 +1,36 @@
+<li class="dropdown">
+  <%= link_to "", class: "dropdown-toggle", data: {toggle: "dropdown"} do %>
+    <%= t("layout.header.products") %> <b class="caret"></b>
+  <% end %>
+  <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+
+    <li><%= link_to t("layout.header.all"), products_path %></li>
+
+    <% if @level_parent.any? %>
+
+      <% @level_parent.each do |parent| %>
+
+        <% if Category.have_child(parent).any? %>
+
+          <li class="dropdown-submenu">
+            <%= link_to "", class: "dropdown-toggle", data: {toggle: "dropdown"} do %>
+              <%= parent.title %>
+            <% end %>
+            <ul class="dropdown-menu">
+              <% Category.have_child(parent).each do |child| %>
+                <li>
+                  <%= link_to category_path(category: child.friendly_id) do %>
+                    <%= child.title %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+
+        <% else %>
+          <li></li>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ul>
+</li>

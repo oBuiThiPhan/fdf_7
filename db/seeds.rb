@@ -9,11 +9,11 @@ User.create(name: "admin",
             email: "admin@gmail.com",
             role: 2,
             password: "123456789")
-Category.create(id: 1, title: "root", level: 0, left_index: 0, right_index: 9)
-Category.create(id: 2, title: "food", level: 1, left_index: 1, right_index: 4)
-Category.create(id: 3, title: "drink", level: 1, left_index: 5, right_index: 8)
-Category.create([{id: 4, title: "soda", level: 2, left_index: 6, right_index: 7},
-  {id: 5, title: "sea food", level: 2, left_index: 2, right_index: 3}])
+Category.create(id: 1, title: "root", level: 0, left_id: 0, right_id: 9)
+Category.create(id: 2, title: "food", level: 1, left_id: 1, right_id: 4)
+Category.create(id: 3, title: "drink", level: 1, left_id: 5, right_id: 8)
+Category.create([{id: 4, title: "soda", level: 2, left_id: 6, right_id: 7},
+  {id: 5, title: "sea food", level: 2, left_id: 2, right_id: 3}])
 (1..10).each do |stt|
   Product.create(
     name: "sea #{stt}",

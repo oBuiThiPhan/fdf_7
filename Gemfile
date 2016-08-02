@@ -41,6 +41,7 @@ gem "omniauth-google-oauth2"
 gem "figaro"
 gem "chatwork"
 gem "sidekiq"
+gem "friendly_id"
 # Use ActiveModel has_secure_passworda
 # gem "bcrypt", "~> 3.1.7"
 

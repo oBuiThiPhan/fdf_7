@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get "about" => "static_pages#about"
   get "contact" => "static_pages#contact"
   post "/cart/:id" => "cart#update"
+  get "/categories/:category", to: "products#index", as: "category"
+
   resources :users, only: [:show, :edit, :update] do
     resources :orders, only: [:new, :create, :show]
   end

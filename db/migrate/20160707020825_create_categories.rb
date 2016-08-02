@@ -3,8 +3,8 @@ class CreateCategories < ActiveRecord::Migration
     create_table :categories do |t|
       t.string :title
       t.integer :level
-      t.integer :left_index
-      t.integer :right_index
+      t.integer :left_id
+      t.integer :right_id
 
       t.timestamps null: false
     end
