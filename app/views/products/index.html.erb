@@ -42,6 +42,7 @@
     </tr>
   </table>
 </div>
+
 <div class="row">
   <% if @products.any? %>
     <% @products.each do |product| %>
@@ -71,7 +72,7 @@
     <h4><%= t "products.noresult" %></h4>
   <%end%>
 </div>
-<%= paginate @products %>
+<%= paginate @products%>
 <br>
 <br>
 <br>

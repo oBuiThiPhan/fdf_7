@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :load_for_header
 
   protect_from_forgery with: :exception
 
@@ -18,6 +19,9 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  def load_for_header
+    @level_parent = Category.level_parent
+  end
   def store_location
     session[:return_to] = request.fullpath
   end

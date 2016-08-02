@@ -2,9 +2,14 @@ class ProductsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @search= Product.ransack params[:q]
-    @products= @search.result.order(quantity: :desc).page params[:page]
-    @search.build_sort
+    if params[:category_id]
+      @search= Product.select_at_header(params[:category_id].to_i).ransack params[:q]
+      @products = @search.result.order(quantity: :desc).page params[:page]
+    else
+      @search= Product.ransack params[:q]
+      @products= @search.result.order(quantity: :desc).page params[:page]
+    end
+      @search.build_sort
   end
 
   def show

@@ -80,7 +80,7 @@ en:
       shipaddress: "Send us your address for shipping: "
   products:
     hethang: "Out of stock"
-    noresult: "There are no result for your search"
+    noresult: "There are no products for your request"
     total_price: "Total Price"
     empty: "Empty your cart"
     addtocart: "add to cart"
@@ -124,6 +124,7 @@ en:
       profile: "Profile"
       products: "Products"
       suggest: "Suggests"
+      all: "All"
     footer:
       about: "About"
       help: "Help"

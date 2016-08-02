@@ -2,9 +2,9 @@
 <nav>
   <ul class="nav navbar-nav navbar-right">
     <li><%= link_to t("static_pages.home.title"), root_path %></li>
-    <li>
-      <%= link_to t("layout.header.products"), products_path %>
-    </li>
+
+    <%= render "layouts/product_dropdown" %>
+
     <li>
       <%= link_to t("layout.header.suggest"), suggests_path %>
     </li>

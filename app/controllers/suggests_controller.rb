@@ -40,6 +40,6 @@ class SuggestsController < ApplicationController
   end
 
   def load_categories
-    @categories = Category.parent_category
+    @categories = Category.level_parent
   end
 end
